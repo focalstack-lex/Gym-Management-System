@@ -57,5 +57,6 @@ const MANILA_DAY = new Intl.DateTimeFormat('en-CA', {
 });
 
 export function manilaToday(now: Date): IsoDate {
-  return isoDate(MANILA_DAY.format(now));
+  const p = Object.fromEntries(MANILA_DAY.formatToParts(now).map((x) => [x.type, x.value]));
+  return isoDate(`${p.year}-${p.month}-${p.day}`);
 }

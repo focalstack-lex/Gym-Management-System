@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 
 const SRC = fileURLToPath(new URL('.', import.meta.url));
 const DASHES = /[\u2013\u2014]/;
-const EMOJI = /\p{Extended_Pictographic}/u;
+const EMOJI = /[\p{Extended_Pictographic}\p{Regional_Indicator}\u20E3]/u;
 
 function sourceFiles(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
