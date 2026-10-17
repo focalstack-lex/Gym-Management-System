@@ -245,5 +245,5 @@ Delivered as a fluid desk station (1024px and up) and a three-screen phone layou
 - Staff: 6-digit PIN on a registered desk device only; 5 wrong tries lock the device for 5 minutes; the owner resets PINs. The owner signs in on the web with email and password.
 
 ### 8.5 Workout Share Card (Design, 2026-10-18)
-- After "Finish workout", the member can make a 9:16 story image (1080 x 1920): their own photo (camera or library) with an overlay in one of three styles: Stats (workout name, date, time, volume, sets), Minimal (large duration), Streak (weeks, this week's visit dots). Gym wordmark top left.
+- After "Finish workout", the member can make a 9:16 story image (1080 x 1920): their own photo (camera or library) with an overlay in one of seven styles: Stats (workout name, date, time, volume, sets), Minimal (large duration), Streak (weeks, this week's visit dots), Top sets (best set per exercise), PR (new personal record), Month (the month's visit dots), Clean (one quiet caption line). Gym wordmark top left.
 - The image is composed on the device; the photo is never uploaded. Save image writes to the phone; Share opens the system share sheet. No public feed and no leaderboards (Section 3 exclusions stand).
