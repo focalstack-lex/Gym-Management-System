@@ -57,7 +57,7 @@ export function Dashboard() {
                 13 payments today
               </span>
             </div>
-            <div role="img" aria-label="Share of payments today: cash 7 of 13, GCash 4, Maya 2" style={css("display: flex; gap: 3px; height: 2px")}>
+            <div role="img" className="payment-bars" aria-label="Share of payments today: cash 7 of 13, GCash 4, Maya 2" style={css("display: flex; gap: 3px; height: 2px")}>
               <span style={css("flex: 7; background: #E4E4E7")}>
               </span>
               <span style={css("flex: 4; background: #71717A")}>
@@ -111,7 +111,7 @@ export function Dashboard() {
               </span>
             </div>
             <div role="img" aria-label="Entries per hour from 6 AM: 4, 6, 5, 3, 3, 2, 3, 4, 3, 3, 5, 7, 8 at 6 PM" style={css("display: flex; flex-direction: column; gap: 6px")}>
-              <div style={css("display: flex; align-items: flex-end; gap: 4px; height: 96px")}>
+              <div className="chart-bars" style={css("display: flex; align-items: flex-end; gap: 4px; height: 96px")}>
                 <span style={css("flex: 1; height: 50%; border-radius: 1px; background: #71717A")}>
                 </span>
                 <span style={css("flex: 1; height: 75%; border-radius: 1px; background: #71717A")}>
@@ -170,7 +170,7 @@ export function Dashboard() {
                 232 members in total
               </span>
             </div>
-            <div style={css("display: flex; flex-direction: column")}>
+            <div className="stagger" style={css("display: flex; flex-direction: column")}>
               <div style={css("display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 46px; border-top: 1px solid rgba(255,255,255,0.06)")}>
                 <span style={css("display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #FFFFFF; white-space: nowrap")}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30D158" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css("flex-shrink: 0")}>
@@ -367,7 +367,7 @@ export function Dashboard() {
                 </span>
               </li>
             </ul>
-            <Link to="/owner/approvals" style={css("height: 44px; padding: 0 20px; border: 0; border-radius: 14px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 14px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none; align-self: flex-start")}>
+            <Link to="/owner/approvals" className="pressable" style={css("height: 44px; padding: 0 20px; border: 0; border-radius: 14px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 14px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none; align-self: flex-start")}>
               Review approvals
             </Link>
           </section>

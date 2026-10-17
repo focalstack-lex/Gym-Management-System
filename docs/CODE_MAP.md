@@ -17,5 +17,6 @@
 | `web/src/apps/staff/` | Staff PIN screen and route |
 | `web/src/components/` | Phone frame and shared tab bar |
 | `web/src/styles/tokens.css` | Design tokens from spec section 6 |
+| `web/src/styles/animations.css` | Motion keyframes, utility classes and the reduced-motion override |
 
 Staleness gate: update this file in the same commit as any new top-level folder or domain module.

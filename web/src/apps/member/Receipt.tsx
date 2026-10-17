@@ -45,7 +45,7 @@ export default function Receipt() {
         </svg>
         Share receipt
       </button>
-      <Link to="/m/notices" style={css('flex: 1; height: 54px; box-sizing: border-box; border-radius: 16px; background: #FF6A00; color: #000000; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; text-decoration: none')}>Done</Link>
+      <Link to="/m/notices" className="pressable" style={css('flex: 1; height: 54px; box-sizing: border-box; border-radius: 16px; background: #FF6A00; color: #000000; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; text-decoration: none')}>Done</Link>
     </div>
   );
 

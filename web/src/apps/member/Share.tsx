@@ -59,6 +59,15 @@ export function Share() {
     };
   }, [photo]);
 
+  function pickStyle(name: Style) {
+    setCurrent(name);
+    const figure = figureRef.current;
+    if (!figure) return;
+    // Re-adding the class restarts the shared CSS keyframe without remounting the photo.
+    figure.classList.remove('share-card-swap');
+    requestAnimationFrame(() => figure.classList.add('share-card-swap'));
+  }
+
   // Rasterize the 252 x 448 preview at 1080 x 1920. html2canvas draws the DOM directly onto a
   // canvas; the SVG foreignObject route taints the canvas in Chromium and cannot be exported.
   async function saveImage() {
@@ -75,6 +84,7 @@ export function Share() {
           // The preview's 1px hairline would add 8px to the 1080 x 1920 output.
           const clone = document.querySelector('figure');
           if (clone) {
+            clone.classList.remove('share-card-swap');
             clone.style.border = '0';
             clone.style.width = '252px';
             clone.style.height = '448px';
@@ -145,7 +155,7 @@ export function Share() {
         <Link to="/m/today" aria-label="Close, back to today" style={css("width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center")}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></Link>
       </header>
 
-      <figure ref={figureRef} aria-label={'Story image preview, 9:16, ' + current + ' style'} style={css("margin: 14px auto 0; position: relative; width: 252px; height: 448px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); background: #17171A")}>
+      <figure ref={figureRef} className="share-card-swap" aria-label={'Story image preview, 9:16, ' + current + ' style'} style={css("margin: 14px auto 0; position: relative; width: 252px; height: 448px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); background: #17171A")}>
         <img src={photo ?? '/brand/gym-floor.jpg'} alt="Your photo: the gym training floor" style={css("width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block")} />
         <div aria-hidden="true" style={css(`position: absolute; inset: 0; background: rgba(12,12,14,${scrim})`)}></div>
 
@@ -246,7 +256,7 @@ export function Share() {
         {NAMES.map((name) => {
           const on = name === current;
           return (
-            <button key={name} type="button" role="tab" aria-selected={on ? 'true' : 'false'} onClick={() => setCurrent(name)} style={css(`flex: 0 0 auto; height: 44px; padding: 0 16px; border: ${on ? '1px solid #FF6A00' : '1px solid rgba(255,255,255,0.06)'}; border-radius: 12px; background: ${on ? '#1F1F23' : '#17171A'}; color: ${on ? '#FFFFFF' : '#8E8E93'}; font-family: inherit; font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer`)}>{name}</button>
+            <button key={name} type="button" role="tab" aria-selected={on ? 'true' : 'false'} onClick={() => pickStyle(name)} style={css(`flex: 0 0 auto; height: 44px; padding: 0 16px; border: ${on ? '1px solid #FF6A00' : '1px solid rgba(255,255,255,0.06)'}; border-radius: 12px; background: ${on ? '#1F1F23' : '#17171A'}; color: ${on ? '#FFFFFF' : '#8E8E93'}; font-family: inherit; font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer`)}>{name}</button>
           );
         })}
       </div>

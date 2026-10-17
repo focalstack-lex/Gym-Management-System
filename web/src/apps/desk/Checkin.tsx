@@ -34,8 +34,8 @@ export function ReasonSheet({ member, view, onClose, onConfirm }: { member: Memb
   };
   return (
     <>
-    <div style={css("position: absolute; inset: 0; background: rgba(0,0,0,0.6)")}></div>
-    <div role="dialog" aria-modal="true" aria-labelledby="reason-title" style={css("position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 10px 16px 34px; background: #17171A; border-top: 0.5px solid rgba(255,255,255,0.08); border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 14px")}>
+    <div className="sheet-scrim" style={css("position: absolute; inset: 0; background: rgba(0,0,0,0.6)")}></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="reason-title" className="sheet-panel" style={css("position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 10px 16px 34px; background: #17171A; border-top: 0.5px solid rgba(255,255,255,0.08); border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 14px")}>
       <span aria-hidden="true" style={css("align-self: center; width: 36px; height: 5px; border-radius: 3px; background: #3F3F46")}></span>
       <div style={css("display: flex; flex-direction: column; gap: 4px")}>
         <h2 id="reason-title" style={css("margin: 0; font-size: 19px; font-weight: 800")}>Allow entry without renewal</h2>
@@ -225,11 +225,11 @@ export function Checkin() {
       <span style={css("font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Today</span>
       <span style={css("font-size: 13px; color: #8E8E93; font-variant-numeric: tabular-nums")}><span style={css("font-size: 17px; font-weight: 800; color: #FFFFFF")}>{counts.checkIns}</span> in, <span style={css("font-weight: 700; color: #FFFFFF")}>{counts.walkIns}</span> walk-ins</span>
     </div>
-    <ol style={css("list-style: none; margin: 0; padding: 0")}>
+    <ol className="stagger" style={css("list-style: none; margin: 0; padding: 0")}>
         {state.signIns.slice(0, 3).map((s) => {
           const who = state.members.find((m) => m.id === s.memberId);
           return (
-            <li key={s.id} style={css("display: flex; align-items: center; gap: 10px; min-height: 44px; border-top: 1px solid rgba(255,255,255,0.06); white-space: nowrap")}><span style={css("width: 58px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93")}>{s.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis")}>{s.name}</span>{who ? <RowIcon status={statusOf(state, who)} /> : <span style={css("font-size: 11px; color: #A1A1AA")}>Walk-in</span>}</li>
+            <li key={s.id} className="row-in" style={css("display: flex; align-items: center; gap: 10px; min-height: 44px; border-top: 1px solid rgba(255,255,255,0.06); white-space: nowrap")}><span style={css("width: 58px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93")}>{s.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis")}>{s.name}</span>{who ? <RowIcon status={statusOf(state, who)} /> : <span style={css("font-size: 11px; color: #A1A1AA")}>Walk-in</span>}</li>
           );
         })}
     </ol>

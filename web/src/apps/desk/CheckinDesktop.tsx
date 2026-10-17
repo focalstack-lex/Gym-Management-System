@@ -90,7 +90,7 @@ export function CheckinDesktop() {
   const lastVisitNote = view?.lastVisitNote ?? '';
   return (
     <>
-<div style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
+<div className="screen-enter" style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
 <div style={css("max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px")}>
 
   <header style={css("display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 10px 12px 10px 10px; border-radius: 20px; background: #17171A; border: 1px solid rgba(255,255,255,0.06)")}>
@@ -224,7 +224,7 @@ export function CheckinDesktop() {
           {(showAllEntries ? state.signIns : state.signIns.slice(0, 4)).map((s) => {
             const who = state.members.find((m) => m.id === s.memberId);
             return (
-              <li key={s.id} style={css("display: flex; align-items: center; gap: 12px; min-height: 46px; border-top: 1px solid rgba(255,255,255,0.06)")}><span style={css("width: 62px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E8E93")}>{s.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600")}>{s.name}</span>{who ? <RowStatus status={statusOf(state, who)} /> : <span style={css("font-size: 12px; color: #A1A1AA")}>{`Walk-in, ${s.payment ? MODE_LABEL[s.payment.mode] : ''}`}</span>}</li>
+              <li key={s.id} className="row-in" style={css("display: flex; align-items: center; gap: 12px; min-height: 46px; border-top: 1px solid rgba(255,255,255,0.06)")}><span style={css("width: 62px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E8E93")}>{s.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600")}>{s.name}</span>{who ? <RowStatus status={statusOf(state, who)} /> : <span style={css("font-size: 12px; color: #A1A1AA")}>{`Walk-in, ${s.payment ? MODE_LABEL[s.payment.mode] : ''}`}</span>}</li>
             );
           })}
         </ol>

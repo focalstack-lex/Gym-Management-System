@@ -52,7 +52,7 @@ export function Today() {
         </Link>
       </header>
 
-      <Link to="/m/workout" aria-label="Today's session: Chest and Triceps. Continue workout" style={css("margin-top: 18px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 16px 16px 16px 18px; display: flex; align-items: center; gap: 14px")}>
+      <Link to="/m/workout" aria-label="Today's session: Chest and Triceps. Continue workout" className="pressable-card animate-slide-up delay-1" style={css("margin-top: 18px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 16px 16px 16px 18px; display: flex; align-items: center; gap: 14px")}>
         <div style={css("display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0")}>
           <span style={css("font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Today's session</span>
           <span style={css("font-size: 20px; font-weight: 800; font-stretch: 108%")}>Chest + Triceps</span>
@@ -63,7 +63,7 @@ export function Today() {
         </span>
       </Link>
 
-      <section aria-label="Attendance streak" style={css("margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 18px")}>
+      <section aria-label="Attendance streak" className="animate-slide-up delay-2" style={css("margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 18px")}>
         <div style={css("display: flex; align-items: flex-start; justify-content: space-between; gap: 12px")}>
           <div style={css("display: flex; flex-direction: column; gap: 8px")}>
             <span style={css(`display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: ${accent}`)}>
@@ -103,7 +103,7 @@ export function Today() {
       </section>
 
       <div style={css("margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px")}>
-        <Link to="/m/pass" style={css("text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px")}>
+        <Link to="/m/pass" className="pressable-card animate-slide-up delay-3" style={css("text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px")}>
           <div style={css("display: flex; align-items: center; justify-content: space-between")}>
             <span style={css("font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Membership</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
@@ -126,7 +126,7 @@ export function Today() {
         </div>
       </div>
 
-      <Link to="/m/history" style={css("margin-top: 12px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; align-items: center; gap: 14px")}>
+      <Link to="/m/history" className="pressable-card animate-slide-up delay-4" style={css("margin-top: 12px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; align-items: center; gap: 14px")}>
         <span style={css("width: 40px; height: 40px; flex-shrink: 0; box-sizing: border-box; border-radius: 12px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); color: #8E8E93; display: flex; align-items: center; justify-content: center")}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
         </span>

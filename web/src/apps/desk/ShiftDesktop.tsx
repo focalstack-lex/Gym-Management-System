@@ -23,7 +23,7 @@ export function ShiftDesktop() {
   const counts = sheetCounts(state);
   return (
     <>
-<div style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
+<div className="screen-enter" style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
 <div style={css("max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px")}>
 
   <header style={css("display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 10px 14px 10px 10px; border-radius: 20px; background: #17171A; border: 1px solid rgba(255,255,255,0.06)")}>
@@ -68,10 +68,10 @@ export function ShiftDesktop() {
       <div style={css("display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; border-radius: 18px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06)")}>
         <div style={css("display: flex; flex-direction: column; gap: 6px")}>
           <span style={css("font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Ana's count</span>
-          <span style={css("font-size: 44px; line-height: 1; font-weight: 800; font-stretch: 118%; font-variant-numeric: tabular-nums")}>{drawer.whole}<span style={css("font-size: 20px; font-weight: 600; color: #8E8E93")}>.{drawer.cents} PHP</span></span>
+          <span key={drawer.locked ? 'locked' : 'open'} className="count-roll" style={css("font-size: 44px; line-height: 1; font-weight: 800; font-stretch: 118%; font-variant-numeric: tabular-nums")}>{drawer.whole}<span style={css("font-size: 20px; font-weight: 600; color: #8E8E93")}>.{drawer.cents} PHP</span></span>
         </div>
         <button type="button" disabled={drawer.locked} onClick={drawer.lock} style={css("flex: 0 1 280px; height: 60px; border: 0; border-radius: 16px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer")}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Lock my count
+          <svg className={drawer.locked ? 'padlock-snap' : undefined} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Lock my count
         </button>
       </div>
     </main>

@@ -87,6 +87,7 @@ export function Activate() {
       <a
         href="/activate/password"
         onClick={onContinue}
+        className="pressable"
         aria-disabled={!ready}
         style={{ ...css("height: 54px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800"), ...(ready ? null : { opacity: 0.4 }) }}
       >

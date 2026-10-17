@@ -57,7 +57,7 @@ export function Scan() {
     <span aria-hidden="true" style={css("position: absolute; width: 32px; height: 32px; box-sizing: border-box; border: 0 solid #FFFFFF; top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; border-top-right-radius: 8px")}></span>
     <span aria-hidden="true" style={css("position: absolute; width: 32px; height: 32px; box-sizing: border-box; border: 0 solid #FFFFFF; bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; border-bottom-left-radius: 8px")}></span>
     <span aria-hidden="true" style={css("position: absolute; width: 32px; height: 32px; box-sizing: border-box; border: 0 solid #FFFFFF; bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; border-bottom-right-radius: 8px")}></span>
-    <span aria-hidden="true" style={css("position: absolute; left: 14px; right: 14px; top: 119px; height: 2px; background: #FF6A00")}></span>
+    <span aria-hidden="true" className="scan-laser" style={css("position: absolute; left: 14px; right: 14px; top: 119px; height: 2px; background: #FF6A00")}></span>
   </div>
 
   <p style={css("position: absolute; top: 446px; left: 16px; right: 16px; margin: 0; text-align: center; font-size: 14px; font-weight: 600; color: #FFFFFF")}>Hold the member's pass inside the frame</p>
@@ -66,7 +66,7 @@ export function Scan() {
   </div>
 
   {success && (<>
-    <section role="status" aria-label="Last check-in" style={css("position: absolute; left: 16px; right: 16px; bottom: 99px; box-sizing: border-box; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px")}>
+    <section role="status" aria-label="Last check-in" className="scan-success" style={css("position: absolute; left: 16px; right: 16px; bottom: 99px; box-sizing: border-box; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px")}>
       <div style={css("display: flex; align-items: center; gap: 12px")}>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#30D158" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css("flex-shrink: 0")}><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
         <div style={css("display: flex; flex-direction: column; gap: 2px; min-width: 0; flex-grow: 1")}>

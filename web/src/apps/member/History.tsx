@@ -56,7 +56,7 @@ export default function History() {
       </div>
 
       <h2 style={css('margin: 16px 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93')}>Personal records</h2>
-      <ul style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
+      <ul className="stagger" style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
         {RECORDS.map((rec, i) => (
           <li key={rec.name} style={i === 0 ? css('display: flex; align-items: center; gap: 12px; min-height: 56px') : css('display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: 1px solid rgba(255,255,255,0.06)')}>
             <span style={css('display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0')}>
@@ -77,7 +77,7 @@ export default function History() {
       </ul>
 
       <h2 style={css('margin: 16px 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93')}>Today</h2>
-      <ul style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
+      <ul className="stagger" style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
         <li>
           <Link to="/m/workout" style={css('display: flex; align-items: center; gap: 12px; min-height: 58px; color: #FFFFFF; text-decoration: none')}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css('flex-shrink: 0')}>
@@ -99,7 +99,7 @@ export default function History() {
       {SESSIONS.map((s) => (
         <Fragment key={s.day}>
           <h2 style={css('margin: 16px 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93')}>{s.day}</h2>
-          <ul style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
+          <ul className="stagger" style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
             <li style={css('display: flex; align-items: center; gap: 12px; min-height: 58px')}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30D158" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css('flex-shrink: 0')}>
                 <circle cx="12" cy="12" r="10"></circle>

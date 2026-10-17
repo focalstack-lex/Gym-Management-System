@@ -32,6 +32,21 @@
   --font-voice: 'Archivo Variable', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 
+  --motion-instant: 100ms;
+  --motion-fast: 160ms;
+  --motion-normal: 240ms;
+  --motion-deliberate: 360ms;
+  --motion-sheet: 420ms;
+
+  --ease-apple-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --scale-tap-card: scale(0.985);
+  --scale-tap-button: scale(0.97);
+  --scale-tap-tab: scale(0.92);
+
   color-scheme: dark;
 }
 

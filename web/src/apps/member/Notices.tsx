@@ -135,7 +135,7 @@ export default function Notices() {
       {SECTIONS.map((section) => (
         <Fragment key={section.heading}>
           <h2 style={css('margin: 18px 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93')}>{section.heading}</h2>
-          <ul style={css('list-style: none; margin: 0; padding: 0 16px 0 14px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden')}>
+          <ul className="stagger" style={css('list-style: none; margin: 0; padding: 0 16px 0 14px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden')}>
             {section.items.map((n) => {
               const unread = n.unread && !read.has(n.id);
               const label = `${n.title}, ${unread ? 'Unread' : 'Read'}, ${n.time}`;

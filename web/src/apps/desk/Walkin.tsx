@@ -82,7 +82,7 @@ export function Walkin() {
     <span style={css("display: block; padding-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Latest</span>
     <ol style={css("list-style: none; margin: 0; padding: 0")}>
       {rows.map((r) => (
-        <li key={r.id} style={css("display: flex; align-items: center; gap: 10px; min-height: 44px; border-top: 1px solid rgba(255,255,255,0.06); white-space: nowrap")}><span style={css("width: 58px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93")}>{r.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis")}>{r.name}</span><span style={css("font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #A1A1AA")}>{r.pay}</span></li>
+        <li key={r.id} className="row-in" style={css("display: flex; align-items: center; gap: 10px; min-height: 44px; border-top: 1px solid rgba(255,255,255,0.06); white-space: nowrap")}><span style={css("width: 58px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93")}>{r.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis")}>{r.name}</span><span style={css("font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #A1A1AA")}>{r.pay}</span></li>
       ))}
     </ol>
   </section>

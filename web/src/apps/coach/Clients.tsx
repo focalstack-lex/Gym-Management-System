@@ -84,7 +84,7 @@ export default function Clients() {
         </div>
         <ul style={css("list-style: none; margin: 0; padding: 0")}>
           {clients.map((c) => (
-            <li key={c.id} style={css("display: flex; align-items: center; gap: 12px; min-height: 58px; border-top: 1px solid rgba(255,255,255,0.06)")}>
+            <li key={c.id} className="row-in" style={css("display: flex; align-items: center; gap: 12px; min-height: 58px; border-top: 1px solid rgba(255,255,255,0.06)")}>
               <span style={css("width: 36px; height: 36px; flex-shrink: 0; box-sizing: border-box; border-radius: 11px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #8E8E93")}>{c.initials}</span>
               <span style={css("display: flex; flex-direction: column; gap: 6px; flex-grow: 1; min-width: 0")}>
                 <span style={css("font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis")}>{c.name}</span>

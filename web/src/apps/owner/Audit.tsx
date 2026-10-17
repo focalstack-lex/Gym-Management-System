@@ -2,7 +2,7 @@
 // store has logged (state.audit), newest first. Search, date range, actor and action filters
 // narrow the rows locally.
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { css } from '../../lib/css';
 import { useDemo } from '../../demo/store';
 import { OwnerShell } from './OwnerShell';
@@ -47,6 +47,14 @@ export function Audit() {
   const [to, setTo] = useState('2026-10-17');
   const [actor, setActor] = useState(ACTORS[0]);
   const [action, setAction] = useState(ACTIONS[0]);
+  const [exported, setExported] = useState(false);
+  const exportTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (exportTimer.current) window.clearTimeout(exportTimer.current);
+    };
+  }, []);
 
   const logged: Row[] = state.audit.map((e) => ({
     id: e.id,
@@ -79,6 +87,9 @@ export function Audit() {
     link.download = 'infinity-audit.csv';
     link.click();
     URL.revokeObjectURL(url);
+    setExported(true);
+    if (exportTimer.current) window.clearTimeout(exportTimer.current);
+    exportTimer.current = window.setTimeout(() => setExported(false), 2000);
   }
 
   return (
@@ -89,13 +100,19 @@ export function Audit() {
             <span style={css("font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Append-only record</span>
             <h1 style={css("margin: 0; font-size: 28px; font-weight: 800; font-stretch: 110%")}>Audit log</h1>
           </div>
-          <button type="button" onClick={exportCsv} style={css("height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; background: transparent; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; ")}>
+          <button type="button" onClick={exportCsv} aria-pressed={exported} className={exported ? 'export-done' : undefined} style={css("height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; background: transparent; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; ")}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css("flex-shrink: 0")}>
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" x2="12" y1="15" y2="3"></line>
+              {exported ? (
+                <path d="M20 6 9 17l-5-5"></path>
+              ) : (
+                <>
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" x2="12" y1="15" y2="3"></line>
+                </>
+              )}
             </svg>
-            Export CSV
+            {exported ? 'Exported' : 'Export CSV'}
           </button>
         </div>
         <div style={css("display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 16px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: #A1A1AA")}>
@@ -147,7 +164,7 @@ export function Audit() {
                 <th scope="col" style={css("text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93; white-space: nowrap")}>Device</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="stagger">
               {rows.map((r) => (
                 <tr key={r.id}>
                   <td style={css("text-align: left; padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 14px; vertical-align: middle")}>

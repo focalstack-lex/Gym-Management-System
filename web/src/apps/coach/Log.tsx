@@ -37,8 +37,8 @@ export default function Log() {
         <div style={css("position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 16px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 12px")}>
           <div style={css("display: flex; align-items: center; gap: 12px")}>
             <span style={css("flex-grow: 1; font-size: 13px; color: #8E8E93")}>After this session</span>
-            <span style={css("width: 64px; height: 2px; background: #3F3F46")}><span style={css(`display: block; width: ${Math.round((after / 12) * 100)}%; height: 100%; background: #FFFFFF`)}></span></span>
-            <span style={css("font-size: 13px; color: #8E8E93; font-variant-numeric: tabular-nums")}><span style={css("font-size: 16px; font-weight: 800; color: #FFFFFF")}>{after}</span> of 12 left</span>
+            <span style={css("width: 64px; height: 2px; background: #3F3F46")}><span key={after} className="progress-fill" style={css(`display: block; width: ${Math.round((after / 12) * 100)}%; height: 100%; background: #FFFFFF`)}></span></span>
+            <span style={css("font-size: 13px; color: #8E8E93; font-variant-numeric: tabular-nums")}><span key={after} className="count-roll" style={css("font-size: 16px; font-weight: 800; color: #FFFFFF")}>{after}</span> of 12 left</span>
           </div>
           {checkedIn && (
             <button type="button" onClick={logSession} style={css("width: 100%; height: 54px; border: 0; border-radius: 16px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer")}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg>Log session</button>
@@ -67,7 +67,7 @@ export default function Log() {
             <span style={css("font-size: 19px; font-weight: 800; font-stretch: 108%")}>Mika Santos</span>
             <span style={css("font-size: 12px; color: #8E8E93")}>PT 12-session package</span>
           </div>
-          <span style={css("display: flex; flex-direction: column; align-items: flex-end; gap: 2px")}><span style={css("font-size: 26px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums")}>{left}</span><span style={css("font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8E8E93")}>left</span></span>
+          <span style={css("display: flex; flex-direction: column; align-items: flex-end; gap: 2px")}><span key={left} className="count-roll" style={css("font-size: 26px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums")}>{left}</span><span style={css("font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8E8E93")}>left</span></span>
         </div>
         {signedIn && (
           <div style={css("display: flex; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06)")}>

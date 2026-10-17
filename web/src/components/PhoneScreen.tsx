@@ -21,6 +21,7 @@ export function PhoneScreen({
   return (
     <div style={css("position: relative; height: 100dvh; max-width: 480px; margin: 0 auto; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif")}>
       <div
+        className="screen-enter"
         style={{
           ...css('box-sizing: border-box; height: 100%; overflow-x: hidden; overflow-y: auto'),
           padding,

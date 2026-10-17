@@ -16,7 +16,7 @@ const SECTIONS = [
 export function OwnerShell({ children }: { children: ReactNode }) {
   const path = useLocation().pathname.replace(/\/+$/, '') || '/';
   return (
-    <div style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
+    <div className="screen-enter" style={css("min-height: 980px; box-sizing: border-box; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 20px 16px 32px")}>
       <div style={css("max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px")}>
         <header style={css("display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 10px 14px 10px 10px; border-radius: 20px; background: #17171A; border: 1px solid rgba(255,255,255,0.06)")}>
           <div style={css("display: flex; align-items: center; gap: 12px; flex-grow: 1; min-width: 220px")}>

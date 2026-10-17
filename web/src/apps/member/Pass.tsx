@@ -49,7 +49,7 @@ export function Pass() {
         <button type="button" aria-label="Pass options" onClick={sharePass} style={css("width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; background: #17171A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer")}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
       </header>
 
-      <article aria-label="Digital membership pass" style={css("margin-top: 20px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 18px")}>
+      <article aria-label="Digital membership pass" className="pass-reveal" style={css("margin-top: 20px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 18px")}>
         <div style={css("display: flex; align-items: center; gap: 12px")}>
           <div style={css("width: 40px; height: 40px; border-radius: 11px; background: #FFFFFF; overflow: hidden; flex-shrink: 0")}>
             <img src="/brand/logo.jpg" alt="" style={css("width: 100%; height: 100%; object-fit: cover; display: block")} />
@@ -75,7 +75,7 @@ export function Pass() {
           </div>
         </div>
 
-        <div style={css("background: #FFFFFF; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 12px")}>
+        <div className="qr-breathe" style={css("background: #FFFFFF; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 12px")}>
           <div role="img" aria-label={'Member QR code for ' + member.code} style={css("width: 200px; height: 200px; font-size: 0; line-height: 0; white-space: normal")}>
             {cells.map((on, i) => (
               <span key={i} style={css(`display: inline-block; width: 8px; height: 8px; vertical-align: top; background: ${on ? '#000000' : '#FFFFFF'}`)}></span>

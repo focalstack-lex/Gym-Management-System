@@ -1,11 +1,15 @@
 // Port of design/canvas/Member-Workout.dc.html. Set rows toggle done (kg and reps validated),
-// Add set appends a row, Finish workout goes to the share screen. Time and rest timer are the
-// canvas sample values.
+// Add set appends a row, Finish workout goes to the share screen. The rest timer starts at the
+// canvas sample 1:24 and counts down; it is display only.
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PhoneScreen } from '../../components/PhoneScreen';
 import { css } from '../../lib/css';
+
+const REST_SECONDS = 84;
+const REST_TOTAL = 120;
+const REST_CIRCUMFERENCE = 75.4;
 
 interface SetRow {
   id: number;
@@ -31,8 +35,19 @@ const validReps = (value: string) => /^\d+$/.test(value.trim()) && Number(value)
 export function Workout() {
   const [sets, setSets] = useState<SetRow[]>(INITIAL);
   const [invalid, setInvalid] = useState<{ id: number; field: 'kg' | 'reps' } | null>(null);
+  const [rest, setRest] = useState(REST_SECONDS);
   const inputs = useRef<Record<string, HTMLInputElement | null>>({});
   const nextId = useRef(INITIAL.length + 1);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setRest((seconds) => (seconds > 0 ? seconds - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const restLabel = `${Math.floor(rest / 60)}:${String(rest % 60).padStart(2, '0')}`;
+  const restArc = (rest / REST_TOTAL) * REST_CIRCUMFERENCE;
 
   const done = sets.filter((s) => s.done);
   const volume = done.reduce((sum, s) => sum + Number(s.kg) * Number(s.reps), 0);
@@ -74,7 +89,7 @@ export function Workout() {
   const bar = (
     <div style={css("position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 20px 28px; background: #0C0C0E; border-top: 1px solid rgba(255,255,255,0.06); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px")}>
       <button type="button" style={css("height: 52px; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: #1F1F23; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer")}>Add exercise</button>
-      <Link to="/m/share" style={css("height: 52px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800")}>Finish workout</Link>
+      <Link to="/m/share" className="pressable" style={css("height: 52px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800")}>Finish workout</Link>
     </div>
   );
 
@@ -122,11 +137,11 @@ export function Workout() {
             <span style={css("font-size: 12px; color: #8E8E93")}>Barbell, {doneCount} of {sets.length} sets</span>
           </div>
           <div style={css("display: flex; align-items: center; gap: 8px")}>
-            <svg width="28" height="28" viewBox="0 0 28 28" role="img" aria-label="Rest timer, 1 minute 24 seconds left of 2 minutes" style={css("display: block; transform: rotate(-90deg)")}>
+            <svg width="28" height="28" viewBox="0 0 28 28" role="img" aria-label={`Rest timer, ${restLabel} left of 2 minutes`} style={css("display: block; transform: rotate(-90deg)")}>
               <circle cx="14" cy="14" r="12" fill="none" stroke="#3F3F46" strokeWidth="2"></circle>
-              <circle cx="14" cy="14" r="12" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="52.8 75.4"></circle>
+              <circle cx="14" cy="14" r="12" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeDasharray={`${restArc} ${REST_CIRCUMFERENCE}`}></circle>
             </svg>
-            <span style={css("display: flex; flex-direction: column; gap: 1px")}><span style={css("font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums")}>1:24</span><span style={css("font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Rest</span></span>
+            <span style={css("display: flex; flex-direction: column; gap: 1px")}><span key={restLabel} className="timer-tick" style={css("font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums")}>{restLabel}</span><span style={css("font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93")}>Rest</span></span>
           </div>
         </div>
 
@@ -141,9 +156,9 @@ export function Workout() {
               <div key={row.id} style={css("display: grid; grid-template-columns: 34px minmax(0, 1fr) 64px 64px 44px; gap: 8px; align-items: center; height: 44px; padding: 0 2px; font-variant-numeric: tabular-nums")}>
                 <span style={css("font-size: 15px; font-weight: 700; color: #8E8E93")}>{n}</span>
                 <span style={css("font-size: 13px; color: #8E8E93")}>{row.previous}</span>
-                <span style={css("text-align: center; font-size: 16px; font-weight: 700")}>{row.kg}</span>
-                <span style={css("text-align: center; font-size: 16px; font-weight: 700")}>{row.reps}</span>
-                <button type="button" aria-label={'Set ' + n + ' done'} aria-pressed="true" onClick={() => toggle(row)} style={css("width: 44px; height: 44px; border: 0; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer")}><span style={css("width: 28px; height: 28px; border-radius: 50%; background: #FFFFFF; color: #000000; display: flex; align-items: center; justify-content: center")}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span></button>
+                <span className="done-value" style={css("text-align: center; font-size: 16px; font-weight: 700")}>{row.kg}</span>
+                <span className="done-value" style={css("text-align: center; font-size: 16px; font-weight: 700")}>{row.reps}</span>
+                <button type="button" aria-label={'Set ' + n + ' done'} aria-pressed="true" onClick={() => toggle(row)} style={css("width: 44px; height: 44px; border: 0; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer")}><span className="check-pop" style={css("width: 28px; height: 28px; border-radius: 50%; background: #FFFFFF; color: #000000; display: flex; align-items: center; justify-content: center")}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span></button>
               </div>
             );
           }

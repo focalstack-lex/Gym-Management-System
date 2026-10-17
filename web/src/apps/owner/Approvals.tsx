@@ -2,7 +2,7 @@
 // Approve and Reject move a waiting item to the resolved section (local state only,
 // the demo store has no approval queue yet).
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { css } from '../../lib/css';
 import { useDemo } from '../../demo/store';
 import { OwnerShell } from './OwnerShell';
@@ -73,15 +73,27 @@ export function Approvals() {
   const [filter, setFilter] = useState<Filter>('All');
   const [waiting, setWaiting] = useState<Waiting[]>(WAITING);
   const [resolved, setResolved] = useState<Resolved[]>(RESOLVED);
+  const [leaving, setLeaving] = useState<string | null>(null);
+  const leaveTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (leaveTimer.current) window.clearTimeout(leaveTimer.current);
+    };
+  }, []);
 
   function resolve(item: Waiting, verdict: 'Approved' | 'Rejected') {
-    if (!waiting.some((w) => w.id === item.id)) return;
+    if (leaving || !waiting.some((w) => w.id === item.id)) return;
     dispatch({ type: 'logAudit', action: `${verdict} ${item.kind}`, target: item.subject, detail: item.body });
-    setWaiting((list) => list.filter((w) => w.id !== item.id));
-    setResolved((list) => [
-      ...list,
-      { id: item.id, title: `${item.kind}, ${item.subject}`, note: item.body, outcome: `${verdict} by Lex, ${state.time}` },
-    ]);
+    setLeaving(item.id);
+    leaveTimer.current = window.setTimeout(() => {
+      setWaiting((list) => list.filter((w) => w.id !== item.id));
+      setResolved((list) => [
+        ...list,
+        { id: item.id, title: `${item.kind}, ${item.subject}`, note: item.body, outcome: `${verdict} by Lex, ${state.time}` },
+      ]);
+      setLeaving(null);
+    }, 260);
   }
 
   const shown = waiting.filter((w) => filter === 'All' || w.group === filter);
@@ -104,9 +116,9 @@ export function Approvals() {
             )}
           </div>
         </div>
-        <ul style={css("list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px")}>
+        <ul className="stagger" style={css("list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px")}>
           {shown.map((item) => (
-            <li key={item.id} style={css("background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center")}>
+            <li key={item.id} className={leaving === item.id ? 'approval-leave' : undefined} style={css("background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center")}>
               <div style={css("flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px")}>
                 <div style={css("display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px")}>
                   <span style={css("font-size: 17px; font-weight: 800")}>{item.kind}</span>

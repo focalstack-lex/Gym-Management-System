@@ -113,7 +113,7 @@ export default function Plan() {
         </div>
         <ol style={css("list-style: none; margin: 0; padding: 0")}>
           {exercises.map((e, index) => (
-            <li key={e.name} style={css("display: flex; align-items: center; gap: 4px; min-height: 64px; border-top: 1px solid rgba(255,255,255,0.06)")}>
+            <li key={e.name} className="plan-row-in" style={css("display: flex; align-items: center; gap: 4px; min-height: 64px; border-top: 1px solid rgba(255,255,255,0.06)")}>
               <button type="button" aria-label={`Reorder ${e.name}`} onClick={() => moveUp(index)} style={css("width: 36px; height: 44px; flex-shrink: 0; border: 0; background: transparent; color: #71717A; display: flex; align-items: center; justify-content: center; cursor: grab")}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="1"></circle><circle cx="9" cy="5" r="1"></circle><circle cx="9" cy="19" r="1"></circle><circle cx="15" cy="12" r="1"></circle><circle cx="15" cy="5" r="1"></circle><circle cx="15" cy="19" r="1"></circle></svg></button>
               <span style={css("display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0")}>
                 <span style={css("font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis")}>{e.name}</span>

@@ -105,7 +105,7 @@ export default function Enroll() {
       bottomInset={0}
       bars={
         <div style={css("position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 16px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 10px")}>
-            <Link to="/desk/enroll/activation" onClick={onEnroll} style={css("height: 54px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800")}>Enroll and take payment</Link>
+            <Link to="/desk/enroll/activation" onClick={onEnroll} className="pressable" style={css("height: 54px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800")}>Enroll and take payment</Link>
             <span style={css("font-size: 12px; color: #8E8E93; text-align: center")}>Step 1 of 3. Plan and payment come next.</span>
           </div>
       }

@@ -40,8 +40,8 @@ export function TabBar({
             ? css('height: 32px; display: flex; align-items: center; justify-content: center')
             : css('height: 32px; display: flex; align-items: center');
         return (
-          <Link key={tab.key} to={tab.to} aria-current={on ? 'page' : undefined} style={anchor}>
-            <span style={wrap}>{tab.icon}</span>
+          <Link key={tab.key} to={tab.to} aria-current={on ? 'page' : undefined} className={on ? 'tab-link tab-link-active' : 'tab-link'} style={anchor}>
+            <span className={tab.centerKey ? 'tab-icon tab-key' : 'tab-icon'} style={wrap}>{tab.icon}</span>
             {tab.label}
           </Link>
         );

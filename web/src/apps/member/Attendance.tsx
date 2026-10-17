@@ -61,7 +61,7 @@ export default function Attendance() {
             <span key={d} style={css('text-align: center; font-size: 11px; font-weight: 600; color: #8E8E93')}>{d}</span>
           ))}
         </div>
-        <div role="group" aria-label={`Days of ${monthLabel}`} style={css('display: grid; grid-template-columns: repeat(7, minmax(0, 1fr))')}>
+        <div key={monthLabel} role="group" aria-label={`Days of ${monthLabel}`} className={september ? 'calendar-enter-left' : 'calendar-enter-right'} style={css('display: grid; grid-template-columns: repeat(7, minmax(0, 1fr))')}>
           {cells.map((c, i) => {
             if (c.day === null) return <span key={`b${i}`}></span>;
             const wrap = css('display: flex; align-items: center; justify-content: center; height: 40px');
@@ -123,7 +123,7 @@ export default function Attendance() {
       </section>
 
       <h2 style={css('margin: 18px 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93')}>Streak history</h2>
-      <ul style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
+      <ul className="stagger" style={css('list-style: none; margin: 0; padding: 0 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px')}>
         {STREAK.map((row, i) => (
           <li key={row.label} style={i === 0 ? css('display: flex; align-items: center; gap: 12px; min-height: 48px') : css('display: flex; align-items: center; gap: 12px; min-height: 48px; border-top: 1px solid rgba(255,255,255,0.06)')}>
             <span style={css('width: 92px; flex-shrink: 0; font-size: 13px; color: #A1A1AA')}>{row.label}</span>
