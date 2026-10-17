@@ -116,7 +116,7 @@ Add the script:
 npm pkg set scripts.test="vitest run"
 ```
 
-In `web/tsconfig.app.json`, add this top-level key next to `"include"` so test files (which use `node:fs`) are type-checked by Vitest only, not by the browser build:
+In `web/tsconfig.app.json`, add this top-level key next to `"include"` so test files (which use `node:fs`) stay out of the browser build; a separate `tsconfig.test.json` (added in the final-review fix) type-checks them during `tsc -b`:
 
 ```json
 "exclude": ["src/**/*.test.ts"]

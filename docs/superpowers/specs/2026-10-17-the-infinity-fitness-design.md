@@ -152,6 +152,8 @@ All membership dates follow strict deterministic calendar rules in Philippine ti
 | `tabbar-bg` | `rgba(12, 12, 14, 0.82)` + 20px backdrop blur | Translucent tab bars and sticky action bars only |
 | `tabbar-hairline` | `0.5px rgba(255, 255, 255, 0.08)` | Tab bar and sticky bar top border |
 
+CSS custom properties drop the `color-` prefix for status tiers: `--status-active`, `--status-accent`, `--status-frozen`, `--status-expired`, `--status-expired-text`, `--status-gray`, `--status-gray-dim` (see web/src/styles/tokens.css).
+
 ### Contrast Rule
 - `#71717A` on `#17171A` measures about 3.7:1. It is reserved for icons, tracks and text 24px and larger. Small labels use `#8E8E93` (about 5.5:1).
 - Open decision: inactive tab bar labels currently use `#71717A` at 10px (about 4.0:1, under the 4.5:1 text minimum). Lifting them to `#8E8E93` is recommended.
@@ -214,7 +216,7 @@ Delivered as a fluid desk station (1024px and up) and a three-screen phone layou
    - The switch is automatic. Check-ins, walk-ins and renewals keep working offline and sync on reconnection.
 2. Check-in States (member match card):
    - Active and Expiring soon: primary "Check in" (orange), secondary "Renew".
-   - Grace (0 to 3 days past end): status shows AlertCircle and "Grace Period" in orange. A notice states the grace end date and that renewing now chains from the day after the old end date (Section 4.2), so no days are lost. Primary "Check in (In Grace)" (orange), with a prominent "Renew" carrying an orange 1px border.
+   - Grace (1 to 3 days past the end date; the end date itself is the last covered day and counts as Expiring soon): status shows AlertCircle and "Grace Period" in orange. A notice states the grace end date and that renewing now chains from the day after the old end date (Section 4.2), so no days are lost. Primary "Check in (In Grace)" (orange), with a prominent "Renew" carrying an orange 1px border.
    - Expired: status shows XCircle and "Expired" in coral `#FF6961`. A soft-block notice states the end date and the fixed renewal window starting today. Primary "Renew Now" (orange), secondary "Allow Entry (Log Reason)".
    - Allow Entry (Log Reason) opens a bottom sheet: member name and end date, a single-choice reason (Will pay before leaving, Owner approved, E-wallet payment pending, Other), a note required when the reason is Other, then "Log and allow entry". The entry, reason, note, attendant and time write to the append-only audit log. Allowed offline; it queues like any other mutation.
    - Every match shows the 8-week visit grid, visits in 8 weeks and last visit, so the attendant sees attendance context in the same glance.
