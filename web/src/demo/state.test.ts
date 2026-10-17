@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { initialState, reconciliation, reducer, searchMembers, sheetCounts, statusOf } from './state';
+import { isoDate } from '../domain/dates';
+import { initialState, nextMemberCode, reconciliation, reducer, searchMembers, sheetCounts, statusOf } from './state';
 
 const member = (s: ReturnType<typeof initialState>, id: string) => s.members.find((m) => m.id === id)!;
 
@@ -72,5 +73,65 @@ describe('demo state', () => {
     expect(searchMembers(s, 'mika').map((m) => m.id)).toEqual(['mika']);
     expect(searchMembers(s, 'INF-00217').map((m) => m.id)).toEqual(['paolo']);
     expect(searchMembers(s, '  ')).toEqual([]);
+  });
+
+  it('enrolls a member with a generated code and next-day coverage', () => {
+    const s0 = initialState();
+    const s = reducer(s0, { type: 'enroll', name: 'Jessa Lim', nickname: 'Jessa', plan: 'Monthly', months: 1, mode: 'cash' });
+    expect(s.members).toHaveLength(s0.members.length + 1);
+    const added = s.members[s.members.length - 1];
+    expect(added).toMatchObject({ name: 'Jessa Lim', nickname: 'Jessa', code: 'INF-00483', coverageEnd: '2026-11-17', frozen: false });
+    expect(s.audit[0]).toMatchObject({ action: 'Member enrolled', target: 'Jessa Lim' });
+    expect(nextMemberCode(s)).toBe('INF-00484');
+  });
+
+  it('refuses enrollment while offline because it takes payment', () => {
+    const s = reducer(initialState(), { type: 'setOnline', online: false });
+    expect(reducer(s, { type: 'enroll', name: 'Jessa Lim', nickname: null, plan: 'Monthly', months: 1, mode: 'cash' })).toBe(s);
+  });
+
+  it('freezes a membership, extends coverage, and refuses a second freeze', () => {
+    const s0 = initialState();
+    const s = reducer(s0, { type: 'freeze', memberId: 'mika', start: isoDate('2026-10-17'), days: 14, reason: 'Travel', note: null });
+    expect(member(s, 'mika').coverageEnd).toBe('2026-11-28');
+    expect(member(s, 'mika').frozen).toBe(true);
+    expect(statusOf(s, member(s, 'mika'))).toBe('frozen');
+    expect(s.audit[0]).toMatchObject({ action: 'Freeze request submitted', target: 'Mika Santos' });
+    expect(reducer(s, { type: 'freeze', memberId: 'mika', start: isoDate('2026-10-17'), days: 7, reason: 'Travel', note: null })).toBe(s);
+  });
+
+  it('converts a walk-in into a member and keeps the walk-in record', () => {
+    const s = reducer(initialState(), { type: 'convertWalkIn', signInId: 's3', plan: 'Monthly', months: 1, mode: 'gcash' });
+    expect(s.members.some((m) => m.name === 'Jessa Lim')).toBe(true);
+    expect(s.signIns.some((x) => x.id === 's3')).toBe(true);
+    expect(sheetCounts(s).walkIns).toBe(9);
+    expect(s.audit[0]).toMatchObject({ action: 'Walk-in converted', target: 'Jessa Lim' });
+  });
+
+  it('logs a PT session down to zero and then refuses', () => {
+    let s = reducer(initialState(), { type: 'logPtSession', memberId: 'mika', duration: '60 min', notes: 'Good form' });
+    expect(member(s, 'mika').pt?.left).toBe(6);
+    expect(s.audit[0]).toMatchObject({ action: 'PT session logged', target: 'Mika Santos' });
+    while ((member(s, 'mika').pt?.left ?? 0) > 0) {
+      s = reducer(s, { type: 'logPtSession', memberId: 'mika', duration: '60 min', notes: null });
+    }
+    expect(member(s, 'mika').pt?.left).toBe(0);
+    expect(reducer(s, { type: 'logPtSession', memberId: 'mika', duration: '60 min', notes: null })).toBe(s);
+  });
+
+  it('undoes a check-in and writes the audit entry', () => {
+    let s = reducer(initialState(), { type: 'checkIn', memberId: 'mika' });
+    const id = s.signIns[0].id;
+    s = reducer(s, { type: 'undoCheckIn', signInId: id });
+    expect(s.signIns.some((x) => x.id === id)).toBe(false);
+    expect(s.audit[0]).toMatchObject({ action: 'Check-in undone', target: 'Mika Santos' });
+  });
+
+  it('logs arbitrary audit entries and schedules price versions', () => {
+    let s = reducer(initialState(), { type: 'logAudit', action: 'Staff device revoked', target: 'Front desk tablet', detail: 'Owner action' });
+    expect(s.audit[0]).toMatchObject({ action: 'Staff device revoked', target: 'Front desk tablet' });
+    s = reducer(s, { type: 'schedulePrice', price: '1,500', effective: isoDate('2026-11-01'), note: 'Annual review' });
+    expect(s.priceVersions[0]).toMatchObject({ price: '1,500', effective: '2026-11-01', note: 'Annual review' });
+    expect(s.audit[0].action).toBe('Price version scheduled');
   });
 });

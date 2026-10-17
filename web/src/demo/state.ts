@@ -3,7 +3,7 @@
 
 import { addDays, diffDays } from '../domain/dates';
 import type { IsoDate } from '../domain/dates';
-import { periodEnd, renewalStart } from '../domain/coverage';
+import { extendForFreeze, periodEnd, renewalStart } from '../domain/coverage';
 import type { DrawerCount } from '../domain/drawer';
 import { drawerTotal } from '../domain/drawer';
 import type { MembershipStatus } from '../domain/status';
@@ -12,6 +12,13 @@ import type { AuditEntry, Member, PaymentMode, SignIn } from './seed';
 import { DEMO_TIME, DEMO_TODAY, SEED_DRAWER, SEED_EARLIER, SEED_MEMBERS, SEED_SIGN_INS } from './seed';
 
 export type AllowReason = 'Will pay before leaving' | 'Owner approved' | 'E-wallet payment pending' | 'Other';
+
+export interface PriceVersion {
+  id: string;
+  price: string;
+  effective: IsoDate;
+  note: string | null;
+}
 
 export interface DemoState {
   today: IsoDate;
@@ -24,6 +31,7 @@ export interface DemoState {
   earlier: { checkIns: number; walkIns: number };
   audit: AuditEntry[];
   drawer: { outgoing: DrawerCount | null; incoming: DrawerCount | null; draft: DrawerCount };
+  priceVersions: PriceVersion[];
 }
 
 export const initialState = (): DemoState => ({
@@ -37,6 +45,7 @@ export const initialState = (): DemoState => ({
   earlier: { ...SEED_EARLIER },
   audit: [],
   drawer: { outgoing: null, incoming: null, draft: SEED_DRAWER },
+  priceVersions: [],
 });
 
 export type DemoAction =
@@ -44,6 +53,13 @@ export type DemoAction =
   | { type: 'allowEntry'; memberId: string; reason: AllowReason; note: string | null }
   | { type: 'renew'; memberId: string; months: number; mode: PaymentMode }
   | { type: 'recordWalkIn'; name: string; mode: PaymentMode; reference: string | null }
+  | { type: 'enroll'; name: string; nickname: string | null; plan: string; months: number; mode: PaymentMode }
+  | { type: 'freeze'; memberId: string; start: IsoDate; days: number; reason: string; note: string | null }
+  | { type: 'convertWalkIn'; signInId: string; plan: string; months: number; mode: PaymentMode }
+  | { type: 'logPtSession'; memberId: string; duration: string; notes: string | null }
+  | { type: 'undoCheckIn'; signInId: string }
+  | { type: 'logAudit'; action: string; target: string; detail: string }
+  | { type: 'schedulePrice'; price: string; effective: IsoDate; note: string | null }
   | { type: 'setOnline'; online: boolean }
   | { type: 'setDraftCount'; count: DrawerCount }
   | { type: 'lockCount'; role: 'outgoing' | 'incoming' };
@@ -116,6 +132,114 @@ export function reducer(state: DemoState, action: DemoAction): DemoState {
         outbox: queued(state),
       };
     }
+    case 'enroll': {
+      const name = action.name.trim();
+      if (!name) return state;
+      // Enrollment takes payment, so it is prohibited offline (spec section 5).
+      if (!state.online) return state;
+      if (!Number.isInteger(action.months) || action.months < 1) return state;
+      const start = addDays(state.today, 1);
+      const end = periodEnd(start, action.months);
+      const code = nextMemberCode(state);
+      const member: Member = {
+        id: nextId('m'),
+        code,
+        name,
+        nickname: action.nickname?.trim() || null,
+        initials: initials(name),
+        plan: action.plan,
+        coverageEnd: end,
+        graceDays: 3,
+        frozen: false,
+        lastVisit: 'Not yet',
+        pt: null,
+      };
+      return {
+        ...state,
+        members: [...state.members, member],
+        audit: audit(state, 'Member enrolled', name, `${action.plan}, ${start} to ${end}, ${action.mode}, ${code}`),
+      };
+    }
+    case 'freeze': {
+      const member = state.members.find((m) => m.id === action.memberId);
+      if (!member || member.coverageEnd === null || member.frozen) return state;
+      if (!state.online) return state;
+      if (!Number.isInteger(action.days) || action.days < 1 || !action.reason.trim()) return state;
+      const end = extendForFreeze(member.coverageEnd, action.days);
+      const detail = `${action.start}, ${action.days} days, ${action.reason}${action.note?.trim() ? `: ${action.note.trim()}` : ''}`;
+      return {
+        ...state,
+        members: state.members.map((m) => (m.id === member.id ? { ...m, coverageEnd: end, frozen: true } : m)),
+        audit: audit(state, 'Freeze request submitted', member.name, detail),
+      };
+    }
+    case 'convertWalkIn': {
+      if (!state.online) return state;
+      const walkIn = state.signIns.find((s) => s.id === action.signInId && s.kind === 'walkin');
+      if (!walkIn) return state;
+      if (!Number.isInteger(action.months) || action.months < 1) return state;
+      const start = addDays(state.today, 1);
+      const end = periodEnd(start, action.months);
+      const code = nextMemberCode(state);
+      const member: Member = {
+        id: nextId('m'),
+        code,
+        name: walkIn.name,
+        nickname: null,
+        initials: initials(walkIn.name),
+        plan: action.plan,
+        coverageEnd: end,
+        graceDays: 3,
+        frozen: false,
+        lastVisit: 'Not yet',
+        pt: null,
+      };
+      return {
+        ...state,
+        members: [...state.members, member],
+        audit: audit(state, 'Walk-in converted', walkIn.name, `${action.plan}, ${start} to ${end}, credit applied, ${action.mode}, ${code}`),
+      };
+    }
+    case 'logPtSession': {
+      const member = state.members.find((m) => m.id === action.memberId);
+      if (!member?.pt || member.pt.left <= 0) return state;
+      if (!action.duration.trim()) return state;
+      const left = member.pt.left - 1;
+      const notes = action.notes?.trim();
+      return {
+        ...state,
+        members: state.members.map((m) => (m.id === member.id && m.pt ? { ...m, pt: { ...m.pt, left } } : m)),
+        audit: audit(state, 'PT session logged', member.name, `${action.duration}, ${left} of ${member.pt.total} left${notes ? `, ${notes}` : ''}`),
+        outbox: queued(state),
+      };
+    }
+    case 'undoCheckIn': {
+      const entry = state.signIns.find((s) => s.id === action.signInId && s.kind === 'member');
+      if (!entry) return state;
+      return {
+        ...state,
+        signIns: state.signIns.filter((s) => s.id !== entry.id),
+        audit: audit(state, 'Check-in undone', entry.name, entry.time),
+        outbox: queued(state),
+      };
+    }
+    case 'logAudit':
+      return { ...state, audit: audit(state, action.action, action.target, action.detail) };
+    case 'schedulePrice': {
+      if (!state.online) return state;
+      if (!action.price.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(action.effective)) return state;
+      const version: PriceVersion = {
+        id: nextId('p'),
+        price: action.price.trim(),
+        effective: action.effective,
+        note: action.note?.trim() || null,
+      };
+      return {
+        ...state,
+        priceVersions: [version, ...state.priceVersions],
+        audit: audit(state, 'Price version scheduled', 'Monthly', `${version.price} effective ${version.effective}${version.note ? `, ${version.note}` : ''}`),
+      };
+    }
     case 'setOnline':
       // Reconnecting syncs the outbox (demo: immediately).
       return { ...state, online: action.online, outbox: action.online ? 0 : state.outbox };
@@ -130,6 +254,23 @@ export function reducer(state: DemoState, action: DemoAction): DemoState {
       };
     }
   }
+}
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((part) => part[0] ?? '')
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+// The next member code after the highest one already in the store (INF-00483 and up).
+export function nextMemberCode(state: DemoState): string {
+  const highest = state.members.reduce((max, m) => {
+    const digits = Number(m.code.replace(/\D/g, ''));
+    return Number.isFinite(digits) ? Math.max(max, digits) : max;
+  }, 0);
+  return `INF-${String(highest + 1).padStart(5, '0')}`;
 }
 
 export function statusOf(state: DemoState, member: Member): MembershipStatus {

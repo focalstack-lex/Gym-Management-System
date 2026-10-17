@@ -13,8 +13,6 @@ export interface Tab {
   centerKey?: boolean;
 }
 
-const NAV =
-  'position: absolute; left: 0; right: 0; bottom: 0; height: 83px; box-sizing: border-box; padding: 6px 8px 34px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08)';
 
 export function TabBar({
   label,
@@ -29,7 +27,7 @@ export function TabBar({
   justifyStart: boolean;
 }) {
   return (
-    <nav aria-label={label} style={css(NAV)}>
+    <nav aria-label={label} style={css("position: absolute; left: 0; right: 0; bottom: 0; height: 83px; box-sizing: border-box; padding: 6px 8px 34px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08)")}>
       {tabs.map((tab) => {
         const on = tab.key === active;
         const color = on ? '#FF6A00' : '#71717A';

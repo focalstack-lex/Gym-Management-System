@@ -6,4 +6,5 @@ coverage/
 !.env.example
 .vercel/
 supabase/.temp/
+.playwright-mcp/
 *.log

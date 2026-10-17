@@ -24,6 +24,7 @@ Replace the paper sign-in clipboard, walk-in ledger and hand-computed expiry wit
 | Icons | Inline Lucide SVG paths copied from the design canvas | Spec section 6; keeps icons byte-identical to the design without a runtime icon package |
 | Fonts | Archivo and JetBrains Mono variable woff2, self-hosted in `web/public/fonts` (copied from `@fontsource-variable`, OFL licenses included) | Spec section 6 typography; no runtime call to a font CDN |
 | QR scanning | Native `BarcodeDetector` where available, `@zxing/browser` fallback | iOS Safari lacks `BarcodeDetector` |
+| Share image export | `html2canvas` 1.4.1, loaded on demand | Rasterizes the on-screen 9:16 share card to a 1080 x 1920 PNG; Chromium taints every canvas drawn from an SVG `foreignObject`, so the dependency-free route cannot export |
 | Unit tests | Vitest 2 | Native to Vite |
 | Database tests | pgTAP through `supabase test db` | Tests RLS and RPC rules inside PostgreSQL |
 | End-to-end | Playwright | Viewport matrix 320 to 1920, offline simulation |
