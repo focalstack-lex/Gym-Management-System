@@ -37,6 +37,7 @@ Routes covered: member (13), staff (1), desk (10), coach (4), owner (5), demo la
 | Share card style picker | Figure label changes from Stats to Minimal | Browser run |
 | Share card Save image | Downloaded a 1080 x 1920 PNG (3.1 MB), status `Saved as a 1080 x 1920 image.` | `infinity-workout.png` |
 | Workout Add set | Planned sets 10 to 11 | Browser run |
+| Desk station See all entries | List expands and the link is removed | Browser run |
 
 The member Pass options control invokes the native share sheet when available and falls back to copying the pass text. Headless Chromium exposes `navigator.share`, so the operating-system sheet itself is not observable in this harness; no page error was raised.
 

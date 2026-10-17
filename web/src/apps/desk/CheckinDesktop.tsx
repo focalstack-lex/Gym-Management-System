@@ -54,6 +54,7 @@ export function CheckinDesktop() {
   useNetworkParam();
   const [query, setQuery] = useState('');
   const [sheetOpen, setSheetOpen] = useState(params.get('sheet') === 'reason');
+  const [showAllEntries, setShowAllEntries] = useState(false);
   const walk = useWalkInForm();
   const wanted = params.get('member') ?? 'mika';
   const member = query.trim() ? searchMembers(state, query)[0] : (state.members.find((m) => m.id === wanted) ?? state.members[0]);
@@ -220,14 +221,16 @@ export function CheckinDesktop() {
           <div style={css("display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8E8E93")}><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>9 PM</span></div>
         </div>
         <ol style={css("list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column")}>
-          {state.signIns.slice(0, 4).map((s) => {
+          {(showAllEntries ? state.signIns : state.signIns.slice(0, 4)).map((s) => {
             const who = state.members.find((m) => m.id === s.memberId);
             return (
               <li key={s.id} style={css("display: flex; align-items: center; gap: 12px; min-height: 46px; border-top: 1px solid rgba(255,255,255,0.06)")}><span style={css("width: 62px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E8E93")}>{s.time}</span><span style={css("flex-grow: 1; font-size: 14px; font-weight: 600")}>{s.name}</span>{who ? <RowStatus status={statusOf(state, who)} /> : <span style={css("font-size: 12px; color: #A1A1AA")}>{`Walk-in, ${s.payment ? MODE_LABEL[s.payment.mode] : ''}`}</span>}</li>
             );
           })}
         </ol>
-        <a href="#" onClick={(e) => e.preventDefault()} style={css("align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.25); text-underline-offset: 4px")}>{`See all ${counts.checkIns + counts.walkIns} entries`}</a>
+        {!showAllEntries && (
+          <a href="#" onClick={(e) => { e.preventDefault(); setShowAllEntries(true); }} style={css("align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.25); text-underline-offset: 4px")}>{`See all ${counts.checkIns + counts.walkIns} entries`}</a>
+        )}
       </section>
 
       <section aria-label="Walk-in register" style={css("background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px")}>
