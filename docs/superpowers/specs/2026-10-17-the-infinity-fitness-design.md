@@ -243,3 +243,7 @@ Delivered as a fluid desk station (1024px and up) and a three-screen phone layou
 - Activation: at enrollment the desk issues a one-time 8-character code (letters and numbers, shown as a QR and on the printed slip), valid 48 hours. The member enters it with their mobile number or member ID, then sets a password (at least 10 characters, includes a number, not the mobile number or member ID) and accepts the privacy notice (RA 10173). A new code cancels the old one; codes are stored hashed and every issue is audit-logged.
 - Sign-in: member ID or mobile number plus password. Email (for password reset) and Google sign-in are optional, linked after activation. Lost slip or expired code: the desk issues a new code. No SMS.
 - Staff: 6-digit PIN on a registered desk device only; 5 wrong tries lock the device for 5 minutes; the owner resets PINs. The owner signs in on the web with email and password.
+
+### 8.5 Workout Share Card (Design, 2026-10-18)
+- After "Finish workout", the member can make a share image: their own photo (camera or library) with an overlay in one of three styles: Stats (workout name, date, time, volume, sets), Minimal (large duration), Streak (weeks, this week's visit dots). Gym wordmark top left.
+- The image is composed on the device; the photo is never uploaded. Save image writes to the phone; Share opens the system share sheet. No public feed and no leaderboards (Section 3 exclusions stand).
