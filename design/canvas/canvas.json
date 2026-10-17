@@ -1,0 +1,399 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-17T08:10:00Z"
+  },
+  "title": "The Infinity Fitness",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1640,
+      "title": "Design system"
+    },
+    "Member-Home.dc.html": {
+      "x": 0,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Today"
+    },
+    "Member-Pass.dc.html": {
+      "x": 470,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Wallet pass"
+    },
+    "Member-Workout.dc.html": {
+      "x": 940,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Workout log"
+    },
+    "Member-Profile.dc.html": {
+      "x": 1410,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Profile"
+    },
+    "Desk-Checkin.dc.html": {
+      "x": 0,
+      "y": 3164,
+      "w": 1440,
+      "h": 980,
+      "title": "Desk: Check-in station",
+      "expand": "fill"
+    },
+    "Desk-Shift.dc.html": {
+      "x": 1520,
+      "y": 3164,
+      "w": 1440,
+      "h": 980,
+      "title": "Desk: Shift handover",
+      "expand": "fill"
+    },
+    "Desk-Mobile-Checkin.dc.html": {
+      "x": 0,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Check-in",
+      "is_interactive": true
+    },
+    "Desk-Mobile-Walkin.dc.html": {
+      "x": 470,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Walk-in"
+    },
+    "Desk-Mobile-Shift.dc.html": {
+      "x": 940,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Shift handover"
+    },
+    "Coach-Clients.dc.html": {
+      "x": 0,
+      "y": 5748,
+      "w": 390,
+      "h": 844,
+      "title": "Coach: Clients"
+    },
+    "Coach-Log.dc.html": {
+      "x": 470,
+      "y": 5748,
+      "w": 390,
+      "h": 844,
+      "title": "Coach: Log PT session"
+    },
+    "Coach-Plan.dc.html": {
+      "x": 940,
+      "y": 5748,
+      "w": 390,
+      "h": 844,
+      "title": "Coach: Plan builder"
+    },
+    "Member-Attendance.dc.html": {
+      "x": 1880,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Attendance"
+    },
+    "Member-History.dc.html": {
+      "x": 2350,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Workout history"
+    },
+    "Member-Notices.dc.html": {
+      "x": 2820,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Notices"
+    },
+    "Member-Receipt.dc.html": {
+      "x": 3290,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Receipt"
+    },
+    "Member-Busy.dc.html": {
+      "x": 3760,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: How busy"
+    },
+    "Desk-Mobile-Scan.dc.html": {
+      "x": 1410,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Scan",
+      "is_interactive": true
+    },
+    "Desk-Mobile-Expiry.dc.html": {
+      "x": 1880,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Expiry board"
+    },
+    "Desk-Mobile-Enroll.dc.html": {
+      "x": 2350,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Enroll member"
+    },
+    "Desk-Mobile-Freeze.dc.html": {
+      "x": 2820,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Freeze request"
+    },
+    "Desk-Mobile-Convert.dc.html": {
+      "x": 3290,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Walk-in conversion"
+    },
+    "Coach-Schedule.dc.html": {
+      "x": 1410,
+      "y": 5748,
+      "w": 390,
+      "h": 844,
+      "title": "Coach: Schedule"
+    },
+    "Owner-Dashboard.dc.html": {
+      "x": 0,
+      "y": 6972,
+      "w": 1440,
+      "h": 980,
+      "title": "Owner: Dashboard",
+      "expand": "fill"
+    },
+    "Owner-Plans.dc.html": {
+      "x": 1520,
+      "y": 6972,
+      "w": 1440,
+      "h": 980,
+      "title": "Owner: Plans and prices",
+      "expand": "fill"
+    },
+    "Owner-Approvals.dc.html": {
+      "x": 3040,
+      "y": 6972,
+      "w": 1440,
+      "h": 980,
+      "title": "Owner: Approvals",
+      "expand": "fill"
+    },
+    "Owner-Staff.dc.html": {
+      "x": 4560,
+      "y": 6972,
+      "w": 1440,
+      "h": 980,
+      "title": "Owner: Staff and devices",
+      "expand": "fill"
+    },
+    "Owner-Audit.dc.html": {
+      "x": 6080,
+      "y": 6972,
+      "w": 1440,
+      "h": 980,
+      "title": "Owner: Audit log",
+      "expand": "fill"
+    },
+    "Member-Login.dc.html": {
+      "x": 4230,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Sign in"
+    },
+    "Member-Activate.dc.html": {
+      "x": 4700,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Activate account"
+    },
+    "Member-Set-Password.dc.html": {
+      "x": 5170,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Set password"
+    },
+    "Desk-Mobile-Activation.dc.html": {
+      "x": 3760,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Desk phone: Activation slip"
+    },
+    "Staff-PIN.dc.html": {
+      "x": 4230,
+      "y": 4524,
+      "w": 390,
+      "h": 844,
+      "title": "Staff: PIN sign in",
+      "is_interactive": true
+    },
+    "Member-Share.dc.html": {
+      "x": 5640,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Stats style",
+      "is_interactive": true
+    },
+    "Member-Share-Minimal.dc.html": {
+      "x": 6110,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Minimal style",
+      "is_interactive": true
+    },
+    "Member-Share-Streak.dc.html": {
+      "x": 6580,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Streak style",
+      "is_interactive": true
+    },
+    "Member-Share-Lifts.dc.html": {
+      "x": 7050,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Top sets style",
+      "is_interactive": true
+    },
+    "Member-Share-PR.dc.html": {
+      "x": 7520,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, PR style",
+      "is_interactive": true
+    },
+    "Member-Share-Month.dc.html": {
+      "x": 7990,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Month style",
+      "is_interactive": true
+    },
+    "Member-Share-Clean.dc.html": {
+      "x": 8460,
+      "y": 1940,
+      "w": 390,
+      "h": 844,
+      "title": "Member: Share, Clean style",
+      "is_interactive": true
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Member-Home.dc.html",
+    "Member-Pass.dc.html",
+    "Member-Workout.dc.html",
+    "Member-Profile.dc.html",
+    "Desk-Checkin.dc.html",
+    "Desk-Shift.dc.html",
+    "Desk-Mobile-Checkin.dc.html",
+    "Desk-Mobile-Walkin.dc.html",
+    "Desk-Mobile-Shift.dc.html",
+    "Coach-Clients.dc.html",
+    "Coach-Log.dc.html",
+    "Coach-Plan.dc.html",
+    "Member-Attendance.dc.html",
+    "Member-History.dc.html",
+    "Member-Notices.dc.html",
+    "Member-Receipt.dc.html",
+    "Member-Busy.dc.html",
+    "Desk-Mobile-Scan.dc.html",
+    "Desk-Mobile-Expiry.dc.html",
+    "Desk-Mobile-Enroll.dc.html",
+    "Desk-Mobile-Freeze.dc.html",
+    "Desk-Mobile-Convert.dc.html",
+    "Coach-Schedule.dc.html",
+    "Owner-Dashboard.dc.html",
+    "Owner-Plans.dc.html",
+    "Owner-Approvals.dc.html",
+    "Owner-Staff.dc.html",
+    "Owner-Audit.dc.html",
+    "Member-Login.dc.html",
+    "Member-Activate.dc.html",
+    "Member-Set-Password.dc.html",
+    "Desk-Mobile-Activation.dc.html",
+    "Staff-PIN.dc.html",
+    "Member-Share.dc.html",
+    "Member-Share-Minimal.dc.html",
+    "Member-Share-Streak.dc.html",
+    "Member-Share-Lifts.dc.html",
+    "Member-Share-PR.dc.html",
+    "Member-Share-Month.dc.html",
+    "Member-Share-Clean.dc.html"
+  ],
+  "notes": {
+    "memberTitle": {
+      "x": 0,
+      "y": 1690,
+      "text": "Member app",
+      "kind": "title1",
+      "maxW": 8850
+    },
+    "deskTitle": {
+      "x": 0,
+      "y": 2914,
+      "text": "Front desk station",
+      "kind": "title1",
+      "maxW": 2960
+    },
+    "deskMobileTitle": {
+      "x": 0,
+      "y": 4274,
+      "text": "Front desk on phone",
+      "kind": "title1",
+      "maxW": 4620
+    },
+    "coachTitle": {
+      "x": 0,
+      "y": 5498,
+      "text": "Coach app",
+      "kind": "title1",
+      "maxW": 1800
+    },
+    "ownerTitle": {
+      "x": 0,
+      "y": 6722,
+      "text": "Owner (admin)",
+      "kind": "title1",
+      "maxW": 7520
+    }
+  },
+  "designSystems": []
+}

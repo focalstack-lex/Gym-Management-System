@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Desk phone freeze request</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0C0E}
+a{color:#FF6A00}a:hover{color:#FF8A33}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 52px 16px 0">
+
+  <header style="display: flex; align-items: center; gap: 12px">
+    <a href="Desk-Mobile-Checkin.dc.html" aria-label="Back to check-in" style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+      <h1 style="margin: 0; font-size: 20px; font-weight: 800">Freeze membership</h1>
+      <span role="status" style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #8E8E93; white-space: nowrap"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30D158"></span>Online, Ana R. on shift</span>
+    </div>
+  </header>
+
+  <section aria-label="Member" style="margin-top: 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+    <div style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border-radius: 12px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; font-stretch: 115%; color: #8E8E93">MS</div>
+    <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0; flex-grow: 1">
+      <span style="font-size: 17px; font-weight: 800; font-stretch: 105%">Mika Santos</span>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span style="font-weight: 700; color: #30D158">Active</span><span style="color: #8E8E93">to Nov 14</span></span>
+    </div>
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93">INF-00482</span>
+  </section>
+
+  <form aria-label="Freeze request" style="margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+    <label style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Start date</span>
+      <input type="date" value="2026-10-17" style="height: 48px; box-sizing: border-box; border: 1px solid #FF6A00; border-radius: 14px; padding: 0 14px; background: #0C0C0E; color: #FFFFFF; color-scheme: dark; font-family: inherit; font-size: 16px">
+      <span style="font-size: 12px; color: #8E8E93">Today, Sat Oct 17</span>
+    </label>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span id="len" style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Length</span>
+      <div role="radiogroup" aria-labelledby="len" style="display: flex; gap: 4px; padding: 3px; border-radius: 14px; background: #0C0C0E; border: 1px solid rgba(255,255,255,0.06)">
+        <button type="button" role="radio" aria-checked="false" style="flex: 1; height: 44px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: #8E8E93; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">7 days</button>
+        <button type="button" role="radio" aria-checked="true" style="flex: 1; height: 44px; border: 1px solid rgba(255,255,255,0.06); border-radius: 11px; background: #1F1F23; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">14 days</button>
+        <button type="button" role="radio" aria-checked="false" style="flex: 1; height: 44px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: #8E8E93; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">30 days</button>
+      </div>
+    </div>
+    <div style="display: flex">
+        <label style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Reason</span>
+          <span style="position: relative; display: block">
+            <select style="width: 100%; height: 48px; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 0 36px 0 14px; background: #0C0C0E; color: #FFFFFF; font-family: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select reason</option><option selected>Travel</option><option>Injury</option><option>Work</option><option>Other</option></select>
+            <span style="position: absolute; right: 12px; top: 0; bottom: 0; display: flex; align-items: center; pointer-events: none; color: #8E8E93"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"></path></svg></span>
+          </span>
+        </label>
+    </div>
+    <label style="display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Note</span>
+        <input type="text" placeholder="Optional, for the owner" autocomplete="off" style="height: 48px; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 0 14px; background: #0C0C0E; color: #FFFFFF; font-family: inherit; font-size: 16px">
+      </label>
+  </form>
+
+  <section aria-label="Coverage preview" style="margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Preview</span>
+    <span style="font-size: 18px; line-height: 1.2; font-weight: 800; font-stretch: 105%">Coverage moves from Nov 14 to Nov 28</span>
+    <div role="img" aria-label="Frozen 14 days from Oct 17, then coverage resumes through Nov 28" style="display: flex; gap: 2px; height: 2px">
+      <span style="flex: 14 1 0; background: #64D2FF"></span>
+      <span style="flex: 28 1 0; background: #FFFFFF"></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: #8E8E93; font-variant-numeric: tabular-nums"><span>Oct 17</span><span>Oct 31</span><span>Nov 28</span></div>
+    <div style="display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: #A1A1AA">Status during freeze <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64D2FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="10"></circle><line x1="10" x2="10" y1="15" y2="9"></line><line x1="14" x2="14" y1="15" y2="9"></line></svg><span style="font-weight: 700; color: #64D2FF">Frozen</span></div>
+  </section>
+
+  <div style="margin-top: 12px; padding-bottom: 130px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg><span style="font-size: 13px; line-height: 1.45; color: #A1A1AA"><span style="color: #FFFFFF; font-weight: 700">Approval.</span> Backdated freezes need owner approval.</span></div>
+    <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg><span style="font-size: 13px; line-height: 1.45; color: #A1A1AA"><span style="color: #FFFFFF; font-weight: 700">Online only.</span> Freezes are not allowed while the desk is offline.</span></div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 16px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0px">
+    <button type="button" style="height: 54px; border: 0; border-radius: 16px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Submit freeze request</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

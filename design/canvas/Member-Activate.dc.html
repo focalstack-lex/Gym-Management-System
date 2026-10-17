@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Activate membership</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0C0E}
+a{color:#FFFFFF}a:hover{color:#E4E4E7}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 52px 20px 0">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <a href="Member-Login.dc.html" aria-label="Back to sign in" style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <span style="font-size: 12px; font-weight: 600; color: #8E8E93">Step 1 of 2</span>
+  </header>
+
+  <h1 style="margin: 22px 0 0; font-size: 28px; line-height: 1.1; font-weight: 800; font-stretch: 112%; letter-spacing: -0.015em">Activate your membership</h1>
+  <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #8E8E93">Use the code on the slip the front desk gave you when you joined.</p>
+
+  <button type="button" style="margin-top: 22px; width: 100%; min-height: 64px; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; background: #17171A; color: #FFFFFF; font-family: inherit; text-align: left; padding: 0 16px; display: flex; align-items: center; gap: 14px; cursor: pointer">
+    <span style="width: 40px; height: 40px; flex-shrink: 0; box-sizing: border-box; border-radius: 12px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg></span>
+    <span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">Scan the QR on your slip</span><span style="font-size: 12px; color: #8E8E93">Fills in everything for you</span></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+  </button>
+
+  <div aria-hidden="true" style="margin: 18px 0; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #8E8E93"><span style="flex: 1; height: 1px; background: rgba(255,255,255,0.06)"></span>or type it<span style="flex: 1; height: 1px; background: rgba(255,255,255,0.06)"></span></div>
+
+  <label style="display: flex; flex-direction: column; gap: 6px">
+    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Mobile number or member ID</span>
+    <span style="display: flex; align-items: center; height: 52px; box-sizing: border-box; border-radius: 16px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); padding: 0 14px">
+      <input type="text" inputmode="tel" autocomplete="tel" value="0917 482 1530" style="flex-grow: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 16px; outline: none">
+    </span>
+  </label>
+
+  <fieldset style="margin: 16px 0 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 6px">
+    <legend style="padding: 0; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Activation code</legend>
+    <div style="display: flex; align-items: center; gap: 6px">
+      <sc-for list="{{codeA}}" as="b" hint-placeholder-count="4"><input type="text" maxlength="1" aria-label="{{b.label}}" value="{{b.ch}}" autocapitalize="characters" style="width: 36px; height: 50px; box-sizing: border-box; border-radius: 12px; background: #17171A; border: {{b.border}}; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 20px; text-align: center; outline: none"></sc-for>
+      <span aria-hidden="true" style="width: 10px; height: 2px; margin: 0 2px; background: #3F3F46"></span>
+      <sc-for list="{{codeB}}" as="b" hint-placeholder-count="4"><input type="text" maxlength="1" aria-label="{{b.label}}" value="{{b.ch}}" autocapitalize="characters" style="width: 36px; height: 50px; box-sizing: border-box; border-radius: 12px; background: #17171A; border: {{b.border}}; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 20px; text-align: center; outline: none"></sc-for>
+    </div>
+    <span style="font-size: 12px; color: #8E8E93">8 characters, letters and numbers. Valid for 48 hours.</span>
+  </fieldset>
+
+  <p style="margin: 18px 0 0; font-size: 13px; line-height: 1.5; color: #8E8E93">Lost your slip or the code expired? The front desk can issue a new one in seconds.</p>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 20px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08)">
+    <a href="Member-Set-Password.dc.html" style="height: 54px; border-radius: 16px; background: #FF6A00; color: #000000; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800">Continue</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    // Code typed so far: K7QM 2X, focus on the 7th box.
+    const typed = 'K7QM2X';
+    const box = (i) => ({
+      ch: typed[i] || '',
+      label: 'Code character ' + (i + 1),
+      border: i === typed.length ? '1px solid #FF6A00' : '1px solid rgba(255,255,255,0.06)'
+    });
+    return { codeA: [0, 1, 2, 3].map(box), codeB: [4, 5, 6, 7].map(box) };
+  }
+}
+</script>
+</body>
+</html>

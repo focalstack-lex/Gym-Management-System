@@ -20,8 +20,9 @@ Replace the paper sign-in clipboard, walk-in ledger and hand-computed expiry wit
 | Offline store | IndexedDB through `idb` | Spec section 5 outbox; `idb` is a thin promise wrapper |
 | Dates | Pure TypeScript date-only arithmetic on `YYYY-MM-DD` strings, `Intl` for Asia/Manila | Spec section 4 is calendar-date logic; no date library needed |
 | Money | Integer centavos | No floating point on money |
-| Icons | `lucide-react` | Spec section 6: Lucide stroke icons |
-| Fonts | Archivo and JetBrains Mono, self-hosted with `@fontsource-variable` packages | Spec section 6 typography; no runtime call to a font CDN |
+| Routing | `react-router-dom` 6 | One SPA serves the member, desk, staff, coach and owner routes |
+| Icons | Inline Lucide SVG paths copied from the design canvas | Spec section 6; keeps icons byte-identical to the design without a runtime icon package |
+| Fonts | Archivo and JetBrains Mono variable woff2, self-hosted in `web/public/fonts` (copied from `@fontsource-variable`, OFL licenses included) | Spec section 6 typography; no runtime call to a font CDN |
 | QR scanning | Native `BarcodeDetector` where available, `@zxing/browser` fallback | iOS Safari lacks `BarcodeDetector` |
 | Unit tests | Vitest 2 | Native to Vite |
 | Database tests | pgTAP through `supabase test db` | Tests RLS and RPC rules inside PostgreSQL |

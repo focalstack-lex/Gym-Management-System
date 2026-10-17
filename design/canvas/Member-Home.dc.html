@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Member today</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0C0E}
+a{color:#FF6A00}a:hover{color:#FF8A33}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 52px 20px 0">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Saturday, Oct 17</span>
+      <h1 style="margin: 0; font-size: 26px; font-weight: 800; font-stretch: 110%; letter-spacing: -0.01em">Good evening, Mika</h1>
+    </div>
+    <a href="Member-Notices.dc.html" aria-label="Notices, 1 new" style="width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; background: #17171A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; box-sizing: border-box; text-decoration: none; position: relative">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+      <span style="position: absolute; top: 11px; right: 12px; width: 6px; height: 6px; border-radius: 50%; background: #FF6A00"></span>
+    </a>
+  </header>
+
+  <a href="Member-Workout.dc.html" aria-label="Today's session: Chest and Triceps. Continue workout" style="margin-top: 18px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 16px 16px 16px 18px; display: flex; align-items: center; gap: 14px">
+    <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Today's session</span>
+      <span style="font-size: 20px; font-weight: 800; font-stretch: 108%">Chest + Triceps</span>
+      <span style="font-size: 12px; color: #8E8E93">Checked in 6:42 PM, 3 exercises</span>
+    </div>
+    <span style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border-radius: 14px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); color: {{accent}}; display: flex; align-items: center; justify-content: center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </span>
+  </a>
+
+  <section aria-label="Attendance streak" style="margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>Streak
+        </span>
+        <span style="font-size: 48px; line-height: 0.95; font-weight: 800; font-stretch: 120%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">6<span style="font-size: 15px; font-weight: 600; letter-spacing: 0; color: #8E8E93"> weeks</span></span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Last 4 weeks</span>
+        <div role="img" aria-label="Last 4 weeks of visits, 16 visits, every full week met the goal" style="font-size: 0; line-height: 0">
+          <sc-for list="{{microWeeks}}" as="w" hint-placeholder-count="4"><span style="display: block; white-space: nowrap; margin-bottom: {{w.gap}}"><sc-for list="{{w.days}}" as="d" hint-placeholder-count="7"><span style="display: inline-block; width: 5px; height: 5px; margin-right: {{d.gap}}; border-radius: 50%; background: {{d.bg}}"></span></sc-for></span></sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06)">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+        <span style="font-size: 13px; color: #8E8E93"><span style="font-size: 17px; font-weight: 800; color: #FFFFFF; font-variant-numeric: tabular-nums">3 of 4</span> visits this week</span>
+        <span style="font-size: 12px; color: #8E8E93">1 more by Sunday</span>
+      </div>
+      <ol aria-label="This week" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center">
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">M</span><span aria-label="Monday, visited" style="width: 10px; height: 10px; border-radius: 50%; background: {{accent}}"></span></li>
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">T</span><span aria-label="Tuesday, rest" style="width: 10px; height: 10px; border-radius: 50%; background: #3F3F46"></span></li>
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">W</span><span aria-label="Wednesday, visited" style="width: 10px; height: 10px; border-radius: 50%; background: {{accent}}"></span></li>
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">T</span><span aria-label="Thursday, rest" style="width: 10px; height: 10px; border-radius: 50%; background: #3F3F46"></span></li>
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">F</span><span aria-label="Friday, rest" style="width: 10px; height: 10px; border-radius: 50%; background: #3F3F46"></span></li>
+        <li aria-current="date" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 800; color: #FFFFFF">S</span><span aria-label="Saturday, today, visited" style="width: 10px; height: 10px; border-radius: 50%; background: {{accent}}; outline: 1px solid rgba(255,255,255,0.6); outline-offset: 3px"></span></li>
+        <li style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; color: #8E8E93">S</span><span aria-label="Sunday, upcoming" style="width: 10px; height: 10px; box-sizing: border-box; border-radius: 50%; border: 1px solid #3F3F46"></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+    <a href="Member-Pass.dc.html" style="text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Membership</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+      </div>
+      <span style="font-size: 32px; line-height: 1; font-weight: 800; font-stretch: 115%; font-variant-numeric: tabular-nums">28<span style="font-size: 13px; font-weight: 600; color: #8E8E93"> days</span></span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #8E8E93"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span style="color: #FFFFFF; font-weight: 600">Active</span> to Nov 14</span>
+    </a>
+    <div style="background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Trained</span>
+      <span style="font-size: 32px; line-height: 1; font-weight: 800; font-stretch: 115%; font-variant-numeric: tabular-nums">2<span style="font-size: 13px; font-weight: 600; color: #8E8E93">h </span>46<span style="font-size: 13px; font-weight: 600; color: #8E8E93">m</span></span>
+      <div role="img" aria-label="Minutes trained by day: Monday 70, Wednesday 54, Saturday 42 so far, other days rest" style="display: flex; align-items: flex-end; justify-content: space-between; height: 22px; padding: 0 2px">
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: {{accent}}"></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E"></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E; display: flex; align-items: flex-end"><span style="width: 3px; height: 77%; border-radius: 2px; background: {{accent}}"></span></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E"></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E"></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E; display: flex; align-items: flex-end"><span style="width: 3px; height: 60%; border-radius: 2px; background: {{accent}}"></span></span>
+        <span style="width: 3px; height: 100%; border-radius: 2px; background: #2C2C2E"></span>
+      </div>
+    </div>
+  </div>
+
+  <a href="Member-History.dc.html" style="margin-top: 12px; text-decoration: none; color: #FFFFFF; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 14px 16px; display: flex; align-items: center; gap: 14px">
+    <span style="width: 40px; height: 40px; flex-shrink: 0; box-sizing: border-box; border-radius: 12px; background: #1F1F23; border: 1px solid rgba(255,255,255,0.06); color: #8E8E93; display: flex; align-items: center; justify-content: center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+      <span style="font-size: 15px; font-weight: 700">Back + Biceps</span>
+      <span style="font-size: 12px; color: #8E8E93">Wednesday, 54 min, 14 sets</span>
+    </span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+  </a>
+
+  <nav aria-label="Member navigation" style="position: absolute; left: 0; right: 0; bottom: 0; height: 83px; box-sizing: border-box; padding: 6px 8px 34px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08)">
+    <a href="Member-Home.dc.html" aria-current="page" style="min-height: 49px; color: {{accent}}; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; font-size: 10px; font-weight: 600"><span style="height: 32px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span>Today</a>
+    <a href="Member-Workout.dc.html" style="min-height: 49px; color: #71717A; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; font-size: 10px; font-weight: 600"><span style="height: 32px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.4 14.4 9.6 9.6"></path><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"></path><path d="m21.5 21.5-1.4-1.4"></path><path d="M3.9 3.9 2.5 2.5"></path><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"></path></svg></span>Workouts</a>
+    <a href="Member-Pass.dc.html" style="min-height: 49px; color: #71717A; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; font-size: 10px; font-weight: 600"><span style="width: 48px; height: 32px; border-radius: 10px; background: {{accent}}; color: #000000; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg></span>Pass</a>
+    <a href="Member-Attendance.dc.html" style="min-height: 49px; color: #71717A; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; font-size: 10px; font-weight: 600"><span style="height: 32px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></span>Attendance</a>
+    <a href="Member-Profile.dc.html" style="min-height: 49px; color: #71717A; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; font-size: 10px; font-weight: 600"><span style="height: 32px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6A00","options":["#FF6A00","#FF5500","#FF8A1F"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  micro(accent) {
+    // Last 4 weeks, one row per week (Mon to Sun): 1 visit, 0 rest, -1 later this week.
+    const plan = [
+      [0,1,1,0,1,0,1],
+      [0,0,0,1,1,1,1],
+      [1,0,1,1,1,1,0],
+      [1,0,1,0,0,1,-1]
+    ];
+    return plan.map((days, wi) => ({
+      gap: wi === plan.length - 1 ? '0px' : '4px',
+      days: days.map((v, di) => ({
+        gap: di === 6 ? '0px' : '4px',
+        bg: v === 1 ? accent : (v === 0 ? '#3F3F46' : 'rgba(255,255,255,0.06)')
+      }))
+    }));
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#FF6A00';
+    return { accent, microWeeks: this.micro(accent) };
+  }
+}
+</script>
+</body>
+</html>

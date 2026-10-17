@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coach plan builder</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0C0E}
+a{color:#FF6A00}a:hover{color:#FF8A33}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 52px 16px 0">
+
+  <header style="display: flex; align-items: center; gap: 12px">
+    <a href="Coach-Clients.dc.html" aria-label="Back to clients" style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0">
+      <h1 style="margin: 0; font-size: 20px; font-weight: 800">Plan for Mika</h1>
+      <span style="font-size: 12px; color: #8E8E93">Push, pull, legs, 4 days a week</span>
+    </div>
+    <button type="button" aria-label="Plan options" style="width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; background: #17171A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+  </header>
+
+  <div role="tablist" aria-label="Plan day" style="margin-top: 18px; display: flex; gap: 4px; padding: 3px; border-radius: 14px; background: #0C0C0E; border: 1px solid rgba(255,255,255,0.06)">
+    <button type="button" role="tab" aria-selected="true" style="flex: 1; height: 44px; border: 1px solid rgba(255,255,255,0.06); border-radius: 11px; background: #1F1F23; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer">A Push</button>
+    <button type="button" role="tab" aria-selected="false" style="flex: 1; height: 44px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: #8E8E93; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">B Pull</button>
+    <button type="button" role="tab" aria-selected="false" style="flex: 1; height: 44px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: #8E8E93; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">C Legs</button>
+  </div>
+
+  <section aria-label="Day A exercises" style="margin-top: 12px; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 12px 8px 4px 4px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 0 8px 8px 12px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Day A, chest + triceps</span>
+      <span style="font-size: 12px; color: #8E8E93; font-variant-numeric: tabular-nums"><span style="color: #FFFFFF; font-weight: 700">{{totalSets}}</span> sets</span>
+    </div>
+    <ol style="list-style: none; margin: 0; padding: 0">
+      <sc-for list="{{exercises}}" as="e" hint-placeholder-count="3">
+        <li style="display: flex; align-items: center; gap: 4px; min-height: 64px; border-top: 1px solid rgba(255,255,255,0.06)">
+          <button type="button" aria-label="Reorder {{e.name}}" style="width: 36px; height: 44px; flex-shrink: 0; border: 0; background: transparent; color: #71717A; display: flex; align-items: center; justify-content: center; cursor: grab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="1"></circle><circle cx="9" cy="5" r="1"></circle><circle cx="9" cy="19" r="1"></circle><circle cx="15" cy="12" r="1"></circle><circle cx="15" cy="5" r="1"></circle><circle cx="15" cy="19" r="1"></circle></svg></button>
+          <span style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0">
+            <span style="font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{e.name}}</span>
+            <span style="font-size: 12px; color: #8E8E93; white-space: nowrap">{{e.detail}}</span>
+          </span>
+          <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; padding-right: 4px">
+            <span style="font-size: 20px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums">{{e.sets}}<span style="font-size: 12px; font-weight: 600; color: #8E8E93"> x {{e.reps}}</span></span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E8E93">rest {{e.rest}}</span>
+          </span>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <label style="margin-top: 12px; display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 14px; box-sizing: border-box; border-radius: 16px; background: #17171A; border: 1px dashed rgba(255,255,255,0.14)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+    <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Add exercise from library</span>
+    <input type="search" placeholder="Add from exercise library" style="flex-grow: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: #FFFFFF; font-family: inherit; font-size: 15px; outline: none">
+  </label>
+
+  <section aria-label="Library suggestions" style="margin-top: 12px">
+    <span style="display: block; padding: 0 4px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8E8E93">Often paired</span>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <button type="button" style="min-height: 56px; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: #17171A; color: #FFFFFF; font-family: inherit; text-align: left; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; cursor: pointer"><span style="font-size: 14px; font-weight: 700">Cable fly</span><span style="font-size: 11px; color: #8E8E93">Chest, cable</span></button>
+      <button type="button" style="min-height: 56px; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: #17171A; color: #FFFFFF; font-family: inherit; text-align: left; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; cursor: pointer"><span style="font-size: 14px; font-weight: 700">Dips</span><span style="font-size: 11px; color: #8E8E93">Triceps, bodyweight</span></button>
+    </div>
+  </section>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 16px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 10px">
+    <button type="button" style="height: 54px; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: #1F1F23; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Preview</button>
+    <button type="button" style="height: 54px; border: 0; border-radius: 16px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Save and assign</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    // Day A matches the member's Workout log: 4 + 3 + 3 = 10 sets.
+    const exercises = [
+      { name: 'Bench press', detail: 'Barbell, build to 75 kg', sets: 4, reps: '6', rest: '2:00' },
+      { name: 'Incline dumbbell press', detail: 'Dumbbell, 30 degree bench', sets: 3, reps: '10', rest: '1:30' },
+      { name: 'Cable triceps pushdown', detail: 'Cable, rope attachment', sets: 3, reps: '12', rest: '1:00' }
+    ];
+    const totalSets = exercises.reduce((n, e) => n + e.sets, 0);
+    return { exercises, totalSets };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,3 +1,31 @@
+import { BrowserRouter, Navigate, useRoutes } from 'react-router-dom';
+import { DemoProvider } from './demo/store';
+import { coachRoutes } from './apps/coach/routes';
+import { deskRoutes } from './apps/desk/routes';
+import { memberRoutes } from './apps/member/routes';
+import { ownerRoutes } from './apps/owner/routes';
+import { staffRoutes } from './apps/staff/routes';
+import { DemoIndex } from './demo/DemoIndex';
+
+function AppRoutes() {
+  return useRoutes([
+    { path: '/', element: <Navigate to="/login" replace /> },
+    { path: '/demo', element: <DemoIndex /> },
+    ...memberRoutes,
+    ...deskRoutes,
+    ...staffRoutes,
+    ...coachRoutes,
+    ...ownerRoutes,
+    { path: '*', element: <Navigate to="/demo" replace /> },
+  ]);
+}
+
 export default function App() {
-  return <main aria-label="The Infinity Fitness desk">The Infinity Fitness</main>;
+  return (
+    <DemoProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </DemoProvider>
+  );
 }

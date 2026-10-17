@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share workout, clean style</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0C0E}
+a{color:#FFFFFF}a:hover{color:#E4E4E7}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #0C0C0E; color: #FFFFFF; font-family: 'Archivo', system-ui, sans-serif; padding: 52px 20px 0">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <a href="Member-Workout.dc.html" aria-label="Back to workout" style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+      <h1 style="margin: 0; font-size: 17px; font-weight: 700">Share workout</h1>
+      <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #8E8E93"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>Workout saved</span>
+    </div>
+    <a href="Member-Home.dc.html" aria-label="Close, back to today" style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; background: #17171A; border: 1px solid rgba(255,255,255,0.06); color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></a>
+  </header>
+
+  <figure aria-label="Story image preview, 9:16, {{templateName}} style" style="margin: 14px auto 0; position: relative; width: 252px; height: 448px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); background: #17171A">
+    <img src="/_blob/b0d0e3470188dffa23e7b812cf89f23f" alt="Your photo: the gym training floor" style="width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block">
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(12,12,14,{{scrim}})"></div>
+
+    <div style="position: absolute; left: 14px; top: 14px; display: flex; align-items: center; gap: 8px">
+      <span style="width: 28px; height: 28px; border-radius: 8px; background: #FFFFFF; overflow: hidden"><img src="/_blob/294886e6b2eee6dab4e99c3eb05f0d84" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+      <span style="font-size: 10px; font-weight: 800; font-stretch: 125%; letter-spacing: 0.02em">THE INFINITY FITNESS</span>
+    </div>
+
+    <sc-if value="{{isStats}}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; left: 10px; right: 10px; bottom: 10px; border-radius: 16px; background: rgba(12,12,14,0.72); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 20px; font-weight: 800; font-stretch: 110%">Chest + Triceps</span>
+          <span style="font-size: 11px; color: #A1A1AA">Sat, Oct 17 · Digos City</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr))">
+          <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A1A1AA">Time</span><span style="font-size: 18px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums">58<span style="font-size: 12px; color: #A1A1AA">m</span></span></span>
+          <span style="display: flex; flex-direction: column; gap: 3px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.12)"><span style="font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A1A1AA">Volume</span><span style="font-size: 18px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums">4,700<span style="font-size: 12px; color: #A1A1AA"> kg</span></span></span>
+          <span style="display: flex; flex-direction: column; gap: 3px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.12)"><span style="font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A1A1AA">Sets</span><span style="font-size: 18px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums">10</span></span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isMinimal}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 16px; right: 16px; bottom: 18px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 52px; line-height: 0.9; font-weight: 800; font-stretch: 120%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">58:12</span>
+        <span style="font-size: 15px; font-weight: 700">Chest + Triceps</span>
+        <span style="font-size: 11px; color: #E4E4E7">4,700 kg · 10 sets · Sat, Oct 17</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isStreak}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 10px; right: 10px; bottom: 10px; border-radius: 16px; background: rgba(12,12,14,0.72); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+          <span style="display: flex; flex-direction: column; gap: 4px">
+            <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #FF6A00"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>Streak</span>
+            <span style="font-size: 40px; line-height: 0.9; font-weight: 800; font-stretch: 120%; font-variant-numeric: tabular-nums">6<span style="font-size: 13px; font-weight: 600; color: #A1A1AA"> weeks</span></span>
+          </span>
+          <span style="font-size: 11px; color: #A1A1AA; text-align: right">3 of 4 visits<br>this week</span>
+        </div>
+        <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; font-size: 9px; color: #A1A1AA">
+          <sc-for list="{{week}}" as="d" hint-placeholder-count="7"><span style="display: flex; flex-direction: column; align-items: center; gap: 5px">{{d.l}}<span style="width: 8px; height: 8px; box-sizing: border-box; border-radius: 50%; background: {{d.bg}}; border: {{d.border}}"></span></span></sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{isLifts}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 10px; right: 10px; bottom: 10px; border-radius: 16px; background: rgba(12,12,14,0.72); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+          <span style="font-size: 17px; font-weight: 800; font-stretch: 110%">Top sets</span>
+          <span style="font-size: 10px; color: #A1A1AA">Chest + Triceps</span>
+        </div>
+        <sc-for list="{{lifts}}" as="l" hint-placeholder-count="3">
+          <div style="display: flex; align-items: baseline; gap: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.12)">
+            <span style="flex-grow: 1; min-width: 0; font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{l.name}}</span>
+            <span style="font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap">{{l.load}}<span style="font-size: 11px; font-weight: 600; color: #A1A1AA"> {{l.reps}}</span></span>
+          </div>
+        </sc-for>
+        <span style="font-size: 10px; color: #A1A1AA">58 min · 10 sets · 4,700 kg</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isPR}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 10px; right: 10px; bottom: 10px; border-radius: 16px; background: rgba(12,12,14,0.72); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 8px">
+        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A1A1AA; color: #FF6A00"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>New personal record</span>
+        <span style="font-size: 54px; line-height: 0.9; font-weight: 800; font-stretch: 120%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">75<span style="font-size: 18px; font-weight: 700; color: #A1A1AA"> kg</span></span>
+        <span style="font-size: 15px; font-weight: 700">Bench press, 6 reps</span>
+        <span style="font-size: 11px; color: #A1A1AA">Up 5 kg from 70 kg on Sep 19</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isMonth}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 10px; right: 10px; bottom: 10px; border-radius: 16px; background: rgba(12,12,14,0.72); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+          <span style="font-size: 17px; font-weight: 800; font-stretch: 110%">October</span>
+          <span style="font-size: 11px; color: #A1A1AA"><span style="font-size: 15px; font-weight: 800; color: #FFFFFF">12</span> visits</span>
+        </div>
+        <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); row-gap: 6px; justify-items: center">
+          <sc-for list="{{monthCells}}" as="m" hint-placeholder-count="35"><span style="width: 9px; height: 9px; box-sizing: border-box; border-radius: 50%; background: {{m.bg}}; border: {{m.border}}"></span></sc-for>
+        </div>
+        <span style="font-size: 10px; color: #A1A1AA">6 week streak · The Infinity Fitness</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isClean}}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 16px; right: 16px; bottom: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="width: 28px; height: 2px; background: #FFFFFF"></span>
+        <span style="font-size: 13px; font-weight: 700">Chest + Triceps</span>
+        <span style="font-size: 11px; color: #E4E4E7; font-variant-numeric: tabular-nums">58:12 · 4,700 kg · Sat, Oct 17</span>
+      </div>
+    </sc-if>
+  </figure>
+
+  <div role="tablist" aria-label="Overlay style" style="margin: 14px -20px 0; padding: 0 20px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none">
+    <sc-for list="{{templates}}" as="t" hint-placeholder-count="7">
+      <button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="flex: 0 0 auto; height: 44px; padding: 0 16px; border: {{t.border}}; border-radius: 12px; background: {{t.bg}}; color: {{t.color}}; font-family: inherit; font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer">{{t.name}}</button>
+    </sc-for>
+  </div>
+
+  <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <button type="button" style="height: 48px; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: #17171A; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>Take photo</button>
+    <button type="button" style="height: 48px; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: #17171A; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>Choose photo</button>
+  </div>
+  <p style="margin: 8px 4px 0; font-size: 11px; line-height: 1.4; color: #8E8E93">Story size, 1080 x 1920. Your photo stays on your phone until you share.</p>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 14px 20px 34px; background: rgba(12,12,14,0.82); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-top: 0.5px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px">
+    <button type="button" style="height: 54px; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: #1F1F23; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>Save image</button>
+    <button type="button" style="height: 54px; border: 0; border-radius: 16px; background: #FF6A00; color: #000000; font-family: inherit; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="m16 6-4-4-4 4"></path><path d="M12 2v13"></path></svg>Share</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"overlay":{"editor":"enum","options":["Stats","Minimal","Streak","Top sets","PR","Month","Clean"],"default":"Clean"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  monthCells() {
+    // October 2026 starts on a Thursday: 3 empty cells, then 31 days. Mika's visits are orange.
+    const visits = [1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 14, 17];
+    const cells = [0, 1, 2].map(() => ({ bg: 'transparent', border: '0' }));
+    for (let d = 1; d <= 31; d++) {
+      if (visits.includes(d)) cells.push({ bg: '#FF6A00', border: '0' });
+      else if (d > 17) cells.push({ bg: 'transparent', border: '1px solid rgba(255,255,255,0.25)' });
+      else cells.push({ bg: 'rgba(255,255,255,0.22)', border: '0' });
+    }
+    while (cells.length % 7) cells.push({ bg: 'transparent', border: '0' });
+    return cells;
+  }
+  renderVals() {
+    const s = this.state || {};
+    const current = s.template ?? (this.props.overlay ?? 'Clean');
+    const names = ['Stats', 'Minimal', 'Streak', 'Top sets', 'PR', 'Month', 'Clean'];
+    const templates = names.map((name) => {
+      const on = name === current;
+      return {
+        name,
+        selected: on ? 'true' : 'false',
+        bg: on ? '#1F1F23' : '#17171A',
+        border: on ? '1px solid #FF6A00' : '1px solid rgba(255,255,255,0.06)',
+        color: on ? '#FFFFFF' : '#8E8E93',
+        pick: () => this.setState({ template: name })
+      };
+    });
+    // This week Mon Oct 12 to Sun Oct 18: visits Mon, Wed, Sat (today).
+    const week = ['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((l, i) => {
+      const visited = i === 0 || i === 2 || i === 5;
+      const future = i === 6;
+      return { l, bg: visited ? '#FF6A00' : (future ? 'transparent' : '#3F3F46'), border: future ? '1px solid #71717A' : '0' };
+    });
+    return {
+      templates,
+      week,
+      templateName: current,
+      isStats: current === 'Stats',
+      isMinimal: current === 'Minimal',
+      isStreak: current === 'Streak',
+      isLifts: current === 'Top sets',
+      isPR: current === 'PR',
+      isMonth: current === 'Month',
+      isClean: current === 'Clean',
+      lifts: [
+        { name: 'Bench press', load: '75 kg', reps: 'x 6' },
+        { name: 'Incline dumbbell press', load: '26 kg', reps: 'x 10' },
+        { name: 'Cable triceps pushdown', load: '30 kg', reps: 'x 12' }
+      ],
+      monthCells: this.monthCells(),
+      scrim: current === 'Minimal' || current === 'Clean' ? '0.30' : '0.18'
+    };
+  }
+}
+</script>
+</body>
+</html>
