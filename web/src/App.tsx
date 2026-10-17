@@ -11,7 +11,7 @@ import { DemoIndex } from './demo/DemoIndex';
 
 function AppRoutes() {
   return useRoutes([
-    { path: '/', element: <Navigate to="/login" replace /> },
+    { path: '/', element: <Navigate to="/demo" replace /> },
     { path: '/demo', element: <DemoIndex /> },
     ...memberRoutes,
     ...memberMoreRoutes,

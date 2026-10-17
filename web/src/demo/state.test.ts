@@ -134,4 +134,11 @@ describe('demo state', () => {
     expect(s.priceVersions[0]).toMatchObject({ price: '1,500', effective: '2026-11-01', note: 'Annual review' });
     expect(s.audit[0].action).toBe('Price version scheduled');
   });
+
+  it('resets state back to pristine initialState', () => {
+    let s = reducer(initialState(), { type: 'checkIn', memberId: 'mika' });
+    expect(sheetCounts(s).checkIns).toBe(48);
+    s = reducer(s, { type: 'reset' });
+    expect(sheetCounts(s).checkIns).toBe(47);
+  });
 });

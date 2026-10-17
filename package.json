@@ -1,0 +1,13 @@
+{
+  "name": "gym-management-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "test": "npm --prefix web test",
+    "lint": "npm --prefix web run lint",
+    "preview": "npm --prefix web run preview"
+  }
+}

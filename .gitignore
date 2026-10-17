@@ -7,4 +7,5 @@ coverage/
 .vercel/
 supabase/.temp/
 .playwright-mcp/
+.claude/
 *.log

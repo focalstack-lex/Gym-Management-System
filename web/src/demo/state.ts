@@ -62,7 +62,8 @@ export type DemoAction =
   | { type: 'schedulePrice'; price: string; effective: IsoDate; note: string | null }
   | { type: 'setOnline'; online: boolean }
   | { type: 'setDraftCount'; count: DrawerCount }
-  | { type: 'lockCount'; role: 'outgoing' | 'incoming' };
+  | { type: 'lockCount'; role: 'outgoing' | 'incoming' }
+  | { type: 'reset' };
 
 let seq = 100;
 const nextId = (prefix: string) => `${prefix}${++seq}`;
@@ -253,6 +254,8 @@ export function reducer(state: DemoState, action: DemoAction): DemoState {
         audit: audit(state, 'Drawer count locked', action.role, `${drawerTotal(state.drawer.draft)} centavos`),
       };
     }
+    case 'reset':
+      return initialState();
   }
 }
 
