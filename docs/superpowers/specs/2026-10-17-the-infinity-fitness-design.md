@@ -237,3 +237,9 @@ Delivered as a fluid desk station (1024px and up) and a three-screen phone layou
 - Log PT Session: logging is enabled only when the client has a same-day desk check-in. Without one the action is disabled with an explanation. Shows the package balance after deduction.
 - Plan Builder: day tabs, exercise rows with sets, reps and rest, exercise library search.
 - Open decision: content scope for nutritional guides, given that food calorie logging is excluded (Section 3).
+
+### 8.4 Accounts and Sign-in (Design, 2026-10-18)
+- No open sign-up. A member account exists only after the desk enrolls the member and records payment.
+- Activation: at enrollment the desk issues a one-time 8-character code (letters and numbers, shown as a QR and on the printed slip), valid 48 hours. The member enters it with their mobile number or member ID, then sets a password (at least 10 characters, includes a number, not the mobile number or member ID) and accepts the privacy notice (RA 10173). A new code cancels the old one; codes are stored hashed and every issue is audit-logged.
+- Sign-in: member ID or mobile number plus password. Email (for password reset) and Google sign-in are optional, linked after activation. Lost slip or expired code: the desk issues a new code. No SMS.
+- Staff: 6-digit PIN on a registered desk device only; 5 wrong tries lock the device for 5 minutes; the owner resets PINs. The owner signs in on the web with email and password.
