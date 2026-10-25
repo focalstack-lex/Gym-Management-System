@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\PROJECTS\\Gym Management System\\logs\\.4d70181a358b055469a2e83dce74e2bf1e710dd3-audit.json",
+    "files": [
+        {
+            "date": 1792381224799,
+            "name": "E:\\PROJECTS\\Gym Management System\\logs\\mcp-puppeteer-2026-10-19.log",
+            "hash": "c824ec3be6816447e25c2d67bd0fdaa2ee5547f10543b79af300a5cb06ff8988"
+        }
+    ],
+    "hashType": "sha256"
+}
