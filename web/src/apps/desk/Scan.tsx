@@ -1,12 +1,14 @@
 // Desk-Mobile-Scan: QR viewfinder with the last check-in result and a short undo window.
 
-import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { css } from '../../lib/css';
 import { PhoneScreen } from '../../components/PhoneScreen';
 import { useDemo } from '../../demo/store';
-import { daysLeft } from '../../demo/state';
+import { daysLeft, statusOf } from '../../demo/state';
+import { doorDecision } from '../../domain/status';
 import { DeskTabBar } from './DeskTabBar';
+import { assignCard, findMemberByCard, loadCardMap, preferredCard, useCardReader } from './_card';
 import { useNetworkParam } from './_hooks';
 
 const DEFAULT_LINE = 'Mika Santos checked in,';
@@ -17,10 +19,56 @@ const DEFAULT_CODE = 'INF-00482';
 
 export function Scan() {
   const { state, dispatch } = useDemo();
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   useNetworkParam();
   const [torch, setTorch] = useState(false);
   const [undone, setUndone] = useState(false);
+  const [cards, setCards] = useState<Record<string, string>>(() => loadCardMap());
+  const [notice, setNotice] = useState<string | null>(null);
+  const lastTap = useRef<{ raw: string; at: number } | null>(null);
+
+  const readCard = (raw: string) => {
+    const now = performance.now();
+    if (lastTap.current && lastTap.current.raw === raw && now - lastTap.current.at < 250) return;
+    lastTap.current = { raw, at: now };
+    setUndone(false);
+
+    const found = findMemberByCard(state.members, cards, raw);
+    if (!found) {
+      const target = params.get('assign');
+      if (target) {
+        const member = state.members.find((m) => m.id === target || m.code === target);
+        const uid = preferredCard(raw);
+        if (member && uid) {
+          setCards(assignCard(uid, member.id));
+          lastTap.current = null;
+          setNotice(`Card ${uid} assigned to ${member.name}. Tap it again to check in.`);
+          return;
+        }
+        setNotice('Card number not recognized. Type the member code instead.');
+        return;
+      }
+      dispatch({ type: 'logAudit', action: 'Unknown card tapped', target: raw, detail: 'No member assigned' });
+      setNotice(`Card not recognized (${preferredCard(raw) ?? raw}). Assign it from this desk.`);
+      return;
+    }
+
+    const { member } = found;
+    if (doorDecision(statusOf(state, member)) !== 'allow') {
+      navigate(`/desk/checkin?member=${member.id}`);
+      return;
+    }
+    if (state.signIns.some((s) => s.memberId === member.id)) {
+      setNotice(`${member.name} is already checked in today.`);
+      return;
+    }
+    dispatch({ type: 'checkIn', memberId: member.id });
+    setNotice(`Card accepted. ${member.name} checked in.`);
+  };
+
+  useCardReader(readCard);
+
   const scanning = params.get('state') === 'scanning' || undone;
   const success = !scanning;
   const latest = state.signIns.find((s) => s.kind === 'member');
@@ -60,13 +108,13 @@ export function Scan() {
     <span aria-hidden="true" className="scan-laser" style={css("position: absolute; left: 14px; right: 14px; top: 119px; height: 2px; background: #FF6A00")}></span>
   </div>
 
-  <p style={css("position: absolute; top: 446px; left: 16px; right: 16px; margin: 0; text-align: center; font-size: 14px; font-weight: 600; color: #FFFFFF")}>Hold the member's pass inside the frame</p>
+  <p role="status" style={css("position: absolute; top: 446px; left: 16px; right: 16px; margin: 0; text-align: center; font-size: 14px; font-weight: 600; color: #FFFFFF")}>{notice ?? "Hold the member's pass inside the frame"}</p>
   <div style={css("position: absolute; top: 478px; left: 0; right: 0; display: flex; justify-content: center")}>
     <Link to="/desk/checkin" style={css("min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; color: #A1A1AA; text-decoration: underline; text-underline-offset: 3px")}>Type name instead</Link>
   </div>
 
   {success && (<>
-    <section role="status" aria-label="Last check-in" className="scan-success" style={css("position: absolute; left: 16px; right: 16px; bottom: 99px; box-sizing: border-box; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px")}>
+    <section key={latest?.id ?? 'none'} role="status" aria-label="Last check-in" className="scan-success" style={css("position: absolute; left: 16px; right: 16px; bottom: 99px; box-sizing: border-box; background: #17171A; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px")}>
       <div style={css("display: flex; align-items: center; gap: 12px")}>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#30D158" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={css("flex-shrink: 0")}><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
         <div style={css("display: flex; flex-direction: column; gap: 2px; min-width: 0; flex-grow: 1")}>

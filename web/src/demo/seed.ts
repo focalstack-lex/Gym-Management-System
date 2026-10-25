@@ -88,6 +88,17 @@ export const SEED_MEMBERS: Member[] = [
   m('joy', 'INF-00122', 'Joy Bautista', null, '2026-06-20', 'Jun 18'),
 ];
 
+// Demo card registry: normalized card UID to member id. The USB reader types the UID, so the
+// desk maps it here first and then falls back to cards assigned on this device (localStorage).
+export const SEED_CARDS: Record<string, string> = {
+  '04A1B2C3': 'mika',
+  '04B2C3D4': 'paolo',
+  '04C3D4E5': 'bea',
+  '04D4E5F6': 'carlo',
+  '04E5F6A7': 'rhea',
+  '04F6A7B8': 'den',
+};
+
 // Today's sheet before the latest entries: 44 check-ins and 8 walk-ins happened earlier.
 export const SEED_EARLIER = { checkIns: 44, walkIns: 8 };
 
